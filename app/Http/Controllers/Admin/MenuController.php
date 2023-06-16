@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MenuRequest;
 use App\Models\Menu;
 use App\Services\FileUploadService;
 use App\Services\RepositoryService\MenuService;

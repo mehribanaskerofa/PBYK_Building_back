@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GalleryRequest;
 use App\Models\Gallery;
 use App\Services\RepositoryService\GalleryService;
 

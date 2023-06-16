@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TeamRequest;
 use App\Models\Team;
 use App\Services\RepositoryService\TeamService;
 

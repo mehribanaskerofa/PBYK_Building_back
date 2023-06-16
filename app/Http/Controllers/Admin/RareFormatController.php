@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RareFormatRequest;
 use App\Models\RareFormat;
 use App\Services\RepositoryService\RareFormatService;
 

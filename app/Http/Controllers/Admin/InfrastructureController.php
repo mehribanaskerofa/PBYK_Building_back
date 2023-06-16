@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InfrastructureRequest;
 use App\Models\Infrastructure;
 use App\Services\RepositoryService\InfrastructureService;
 

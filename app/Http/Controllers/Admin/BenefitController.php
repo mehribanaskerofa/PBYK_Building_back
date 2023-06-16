@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BenefitRequest;
 use App\Models\Benefit;
 use App\Services\RepositoryService\BenefitService;
 

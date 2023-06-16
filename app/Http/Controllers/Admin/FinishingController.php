@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FinishingRequest;
 use App\Models\Finishing;
 use App\Services\RepositoryService\FinishingService;
 
