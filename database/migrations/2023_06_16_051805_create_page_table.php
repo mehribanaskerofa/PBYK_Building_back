@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('locale')->index();
             $table->string('title');
             $table->string('slug');
+            $table->string('button');
             $table->text('description')->nullable();
 
             $table->unique(['page_id', 'locale']);
