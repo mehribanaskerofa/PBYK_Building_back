@@ -17,7 +17,7 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
-        Schema::create('page_translations', function (Blueprint $table) {
+        Schema::create('menu_translations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('menu_id');
             $table->string('locale')->index();

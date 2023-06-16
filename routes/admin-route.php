@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,8 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function () {
     Route::get('/',[AdminController::class,'index'])->name('home');
     Route::get('/logout',[AdminController::class,'logout'])->name('logout');
 
+    Route::resource('page',PageController::class)->except(['show']);
+    Route::resource('menu',PageController::class)->except(['show']);
 
 
     productRoutes();
