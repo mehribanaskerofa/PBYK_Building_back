@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\RareFormat;
+use App\Services\RepositoryService\RareFormatService;
+
+class RareFormatController extends Controller
+{
+
+    public function __construct(protected RareFormatService $service)
+    {
+
+    }
+    public function index()
+    {
+        $models=$this->service->dataAllWithPaginate();
+        return view('admin.rare-format.index',['models'=>$models]);
+    }
+    public function create()
+    {
+        return view('admin.rare-format.form');
+    }
+    public function store(RareFormatRequest $request)
+    {
+        $this->service->store($request);
+        return redirect()->route('admin.rare-format.index');
+    }
+    public function edit(RareFormat $rareFormat)
+    {
+        return view('admin.rare-format.form',['model'=>$rareFormat]);
+    }
+    public function update(RareFormatRequest $rareFormatRequest,RareFormat  $rareFormat)
+    {
+        $this->service->update($rareFormatRequest,$rareFormat);
+        return redirect()->back();
+    }
+    public function destroy(RareFormat $rareFormat)
+    {
+        $this->service->delete($rareFormat);
+        return redirect()->back();
+    }
+}
