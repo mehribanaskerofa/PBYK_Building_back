@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('image');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
-        Schema::create('page_translations', function (Blueprint $table) {
+        Schema::create('team_translations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('page_id');
+            $table->unsignedBigInteger('team_id');
             $table->string('locale')->index();
             $table->string('title');
-            $table->string('slug');
-            $table->text('description')->nullable();
 
-            $table->unique(['page_id', 'locale']);
-            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->unique(['team_id', 'locale']);
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
     }
 
@@ -35,7 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('page_translations');
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('team_translations');
+        Schema::dropIfExists('teams');
     }
 };

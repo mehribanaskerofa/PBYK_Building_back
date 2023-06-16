@@ -11,22 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('benefits', function (Blueprint $table) {
             $table->id();
             $table->string('image');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
-        Schema::create('page_translations', function (Blueprint $table) {
+        Schema::create('benefit_translations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('page_id');
+            $table->unsignedBigInteger('benefit_id');
             $table->string('locale')->index();
             $table->string('title');
-            $table->string('slug');
             $table->text('description')->nullable();
 
-            $table->unique(['page_id', 'locale']);
-            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->unique(['benefit_id', 'locale']);
+            $table->foreign('benefit_id')->references('id')->on('benefits')->onDelete('cascade');
         });
     }
 
@@ -35,7 +34,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('page_translations');
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('benefit_translations');
+        Schema::dropIfExists('benefits');
     }
 };

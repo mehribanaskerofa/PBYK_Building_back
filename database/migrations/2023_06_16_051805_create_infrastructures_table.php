@@ -11,22 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('infrastructures', function (Blueprint $table) {
             $table->id();
             $table->string('image');
+            $table->date('date')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
-        Schema::create('page_translations', function (Blueprint $table) {
+        Schema::create('infrastructure_translations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('page_id');
+            $table->unsignedBigInteger('infrastructure_id');
             $table->string('locale')->index();
             $table->string('title');
-            $table->string('slug');
             $table->text('description')->nullable();
 
-            $table->unique(['page_id', 'locale']);
-            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->unique(['infrastructure_id', 'locale']);
+            $table->foreign('infrastructure_id')->references('id')->on('infrastructures')->onDelete('cascade');
         });
     }
 
@@ -35,7 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('page_translations');
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('infrastructure_translations');
+        Schema::dropIfExists('infrastructures');
     }
 };
