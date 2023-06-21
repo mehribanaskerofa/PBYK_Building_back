@@ -42,4 +42,13 @@ class RareFormatController extends Controller
         $this->service->delete($rareFormat);
         return redirect()->back();
     }
+    public function status($id)
+    {
+        $model = RareFormat::find($id);
+
+        $model->active = request()->active;
+        $model->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 }

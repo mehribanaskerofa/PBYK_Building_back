@@ -66,9 +66,10 @@
                                        </div>
                                        <div class="form-group col-12">
                                            <label>Description</label>
-                                           <input type="text" placeholder="Description {{$lang}}" name="{{$lang}}[description]"
-                                                  value="{{old("$lang.description",isset($model) ? ($model->translateOrDefault($lang)->description ?? '') : '')}}"
-                                                  class="form-control">
+                                           <textarea id="summernote"  placeholder="Description {{$lang}}" name="{{$lang}}[description]"
+                                                     class="form-control">
+                                           {{old("$lang.description",isset($model) ? ($model->translateOrDefault($lang)->description ?? '') : '')}}
+                                           </textarea>
                                            @error("$lang.description")
                                            <span class="text-danger">{{$message}}</span>
                                            @enderror
@@ -109,27 +110,6 @@
     </div>
 @endsection
 
-{{--@push('js')--}}
-{{--    <script>--}}
-{{--        $(document).ready(function (){--}}
-{{--            getCategoryAttributes($('.product-category').trigger('change').val());--}}
-{{--            const $product_id={{@isset($model) ? $model->id : ''}};--}}
-{{--            $('.product-category').on('change',function (){--}}
-{{--                getCategoryAttributes($(this).val());--}}
-{{--            });--}}
-
-{{--            function getCategoryAttributes($category_id){--}}
-{{--                $.ajax({--}}
-{{--                    method: 'get',--}}
-{{--                    url: "{{route('admin.category-attributes',['categoryId','productId'])}}"--}}
-{{--                        .replace('categoryId',$category_id)--}}
-{{--                        .replace('productId',$('.product-category').val()),--}}
-{{--                    success(response) {--}}
-{{--                        $('#attributes-area').html(response);--}}
-{{--                        $('#select2').select2();--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            }--}}
-{{--        });--}}
-{{--    </script>--}}
-{{--@endpush--}}
+@push('js')
+    <script src="{{asset('js/summernote.js')}}"></script>
+@endpush

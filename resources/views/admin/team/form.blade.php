@@ -79,3 +79,6 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script src="{{asset('js/summernote.js')}}"></script>
+@endpush

@@ -41,4 +41,13 @@ class StaticController extends Controller
         $this->service->delete($static);
         return redirect()->back();
     }
+    public function status($id)
+    {
+        $model = StaticModel::find($id);
+
+        $model->active = request()->active;
+        $model->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FinishingRequest;
 use App\Models\Finishing;
+use App\Models\Gallery;
 use App\Services\RepositoryService\FinishingService;
 
 class FinishingController extends Controller
@@ -41,5 +42,14 @@ class FinishingController extends Controller
     {
         $this->service->delete($finishing);
         return redirect()->back();
+    }
+    public function status($id)
+    {
+        $model = Finishing::find($id);
+
+        $model->active = request()->active;
+        $model->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
     }
 }

@@ -44,11 +44,12 @@
                                            <span class="text-danger">{{$message}}</span>
                                            @enderror
                                        </div>
-                                       <div class="form-group col-6">
+                                       <div class="form-group col-12">
                                            <label>Description</label>
-                                           <input type="text" placeholder="Description {{$lang}}" name="{{$lang}}[description]"
-                                                  value="{{old("$lang.description",isset($model) ? ($model->translateOrDefault($lang)->description ?? '') : '')}}"
-                                                  class="form-control">
+                                           <textarea id="summernote"  placeholder="Description {{$lang}}" name="{{$lang}}[description]"
+                                                     class="form-control">
+                                           {{old("$lang.description",isset($model) ? ($model->translateOrDefault($lang)->description ?? '') : '')}}
+                                           </textarea>
                                            @error("$lang.description")
                                            <span class="text-danger">{{$message}}</span>
                                            @enderror
@@ -88,3 +89,6 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script src="{{asset('js/summernote.js')}}"></script>
+@endpush

@@ -42,4 +42,13 @@ class InfrastructureController extends Controller
         $this->service->delete($infrastructure);
         return redirect()->back();
     }
+    public function status($id)
+    {
+        $model = Infrastructure::find($id);
+
+        $model->active = request()->active;
+        $model->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 }

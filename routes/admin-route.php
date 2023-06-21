@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\RareFormatController;
 use App\Http\Controllers\Admin\StaticController;
 use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\Front\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login',[AdminController::class,'loginView'])->name('admin.login-view');
@@ -36,34 +38,38 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function () {
 
 
     Route::resource('page',PageController::class)->except(['show']);
-//    Route::get('/status',[PageController::class,'status'])->name('status');
+    Route::get('page/status/{id}',[PageController::class,'status'])->name('status-page');
 
     Route::resource('menu',MenuController::class)->except(['show']);
-//    Route::get('/status',[MenuController::class,'status'])->name('status');
+    Route::get('menu/status/{id}',[MenuController::class,'status'])->name('status-menu');
 
     Route::resource('benefit',BenefitController::class)->except(['show']);
-//    Route::get('/status',[BenefitController::class,'status'])->name('status');
+    Route::get('benefit/status/{id}',[BenefitController::class,'status'])->name('status-benefit');
 
     Route::resource('infrastructure',InfrastructureController::class)->except(['show']);
-//    Route::get('/status',[InfrastructureController::class,'status'])->name('status');
+    Route::get('infrastructure/status/{id}',[InfrastructureController::class,'status'])->name('status-infrastructure');
 
     Route::resource('grand',GrandController::class)->except(['show']);
-//    Route::get('/status',[GrandController::class,'status'])->name('status');
+    Route::get('grand/status/{id}',[GrandController::class,'status'])->name('status-grand');
 
     Route::resource('rare',RareFormatController::class)->except(['show']);
-//    Route::get('/status',[RareFormatController::class,'status'])->name('status');
+    Route::get('rare/status/{id}',[RareFormatController::class,'status'])->name('status-rare');
 
     Route::resource('finish',FinishingController::class)->except(['show']);
-//    Route::get('finish/status',[FinishingController::class,'status'])->name('status-finish');
+    Route::get('finish/status/{id}',[FinishingController::class,'status'])->name('status-finish');
 
     Route::resource('team',TeamController::class)->except(['show']);
-//    Route::get('team/status',[TeamController::class,'status'])->name('status-team');
+    Route::get('team/status/{id}',[TeamController::class,'status'])->name('status-team');
 
     Route::resource('gallery',GalleryController::class)->except(['show']);
     Route::get('gallery/status/{id}',[GalleryController::class,'status'])->name('status-gallery');
 
     Route::resource('static',StaticController::class)->except(['show']);
-//    Route::get('static/status/{id}',[StaticController::class,'status'])->name('status-static');
+    Route::get('static/status/{id}',[StaticController::class,'status'])->name('status-static');
+
+    Route::resource('contact',ContactController::class)->except(['show']);
+    Route::get('contact/status/{id}',[ContactController::class,'status'])->name('status-contact');
+
 
 
 
@@ -100,3 +106,4 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function () {
     productRoutes();
 
 });
+Route::get('/clear-cache', [ConfigurationController::class,'clear'])->name('clear-cache');

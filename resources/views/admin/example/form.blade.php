@@ -121,8 +121,8 @@
     </div>
 
     <div class="card-body">
-        <div    id="summernote">
-
+        <div >
+<textarea id="summernote"></textarea>
 
 
         </div>
