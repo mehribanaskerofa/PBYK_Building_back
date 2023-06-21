@@ -1,7 +1,7 @@
-@extends('admin.layouts.admin',['title'=>'Page'])
+@extends('admin.layouts.admin',['title'=>'Gallery'])
 @section('content')
 
-    <?php  $routeName='admin.page' ?><br>
+    <?php  $routeName='admin.gallery' ?><br>
     <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
     <br>
     <div class="card ">
@@ -10,11 +10,7 @@
                 <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Slug</th>
                     <th>Image</th>
-                    <th>Button</th>
                     <th>Status</th>
                     <th style="width: 50px">Edit</th>
                     <th style="width: 50px">Delete</th>
@@ -24,9 +20,6 @@
                 @foreach($models  as $model)
                     <tr>
                         <td>{{$model->id}}</td>
-                        <td>{{$model->title}}</td>
-                        <td>{{$model->description}}</td>
-                        <td>{{$model->slug}}</td>
                         <td>
                             @isset($model->image)
                                 <div class="form-group">
@@ -34,12 +27,11 @@
                                 </div>
                             @endisset
                         </td>
-                        <td>{{$model->button}}</td>
                         <td>
                             <div class="form-check form-switch">
                                 <input class="form-check-input flexSwitchCheckChecked" type="checkbox" role="switch"
-                                       data-action="{{route('admin.status-page',$model->id)}}"
-                                       @if($model->active) checked @endif>
+                                       data-action="{{route('admin.status-gallery',$model->id)}}"
+                                   @if($model->active) checked @endif>
                             </div>
                         </td>
                         <td>

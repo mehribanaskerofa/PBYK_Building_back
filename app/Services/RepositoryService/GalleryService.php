@@ -15,7 +15,7 @@ class GalleryService
     }
     public function dataAllWithPaginate()
     {
-        return $this->repository->paginate(10,['translations']);
+        return $this->repository->paginate(4);
     }
 
     public function store($request)
@@ -58,7 +58,7 @@ class GalleryService
     {
         return Cache::rememberForever('galleries',
             function (){
-                return $this->repository->all(with:['translations']);
+                return $this->repository->all();
             });
     }
 

@@ -42,4 +42,13 @@ class GalleryController extends Controller
         $this->service->delete($gallery);
         return redirect()->back();
     }
+    public function status($id)
+    {
+        $model = Gallery::find($id);
+
+        $model->active = request()->active;
+        $model->save();
+
+        return response()->json(['success'=>'Status change successfully.']);
+    }
 }

@@ -1,8 +1,8 @@
-@extends('admin.layouts.admin',['title'=>'Page'])
+@extends('admin.layouts.admin',['title'=>'Rare Format'])
 
 
 @section('content')
-    <?php  $routeName='admin.page' ?><br>
+    <?php  $routeName='admin.rare' ?><br>
     <div class="card">
         <div class="card-body">
             <form action="{{ isset($model) ? route($routeName.'.update',$model->id) :  route($routeName.'.store')}}" method="POST" enctype="multipart/form-data">
@@ -20,9 +20,7 @@
                                     <a class="nav-link
                                     {{$loop->first ? ' active ' : '' }}
                                           @error("$langKey.title" ||
-                                                "$langKey.description" ||
-                                                "$langKey.slug" ||
-                                                "$langKey.button")
+                                                "$langKey.description" )
                                                  text-danger @enderror"
                                        id="custom-tabs-two-home-tab" data-toggle="pill" href="#title-{{$langKey}}"
                                        role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">
@@ -37,7 +35,7 @@
                                 <div class="tab-pane fade {{$loop->first ? ' active show' : '' }}" id="title-{{$lang}}"
                                      role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                                    <div class="row">
-                                       <div class="form-group col-4">
+                                       <div class="form-group col-6">
                                            <label>Title</label>
                                            <input type="text" placeholder="title {{$lang}}" name="{{$lang}}[title]"
                                                   value="{{old("$lang.title",isset($model) ? ($model->translateOrDefault($lang)->title ?? '') : '')}}"
@@ -46,25 +44,7 @@
                                            <span class="text-danger">{{$message}}</span>
                                            @enderror
                                        </div>
-                                       <div class="form-group col-4">
-                                           <label>Slug</label>
-                                           <input type="text" placeholder="Slug {{$lang}}" name="{{$lang}}[slug]"
-                                                  value="{{old("$lang.slug",isset($model) ? ($model->translateOrDefault($lang)->slug ?? '') : '')}}"
-                                                  class="form-control">
-                                           @error("$lang.slug")
-                                           <span class="text-danger">{{$message}}</span>
-                                           @enderror
-                                       </div>
-                                       <div class="form-group col-4">
-                                           <label>Button</label>
-                                           <input type="text" placeholder="Button {{$lang}}" name="{{$lang}}[button]"
-                                                  value="{{old("$lang.button",isset($model) ? ($model->translateOrDefault($lang)->button ?? '') : '')}}"
-                                                  class="form-control">
-                                           @error("$lang.button")
-                                           <span class="text-danger">{{$message}}</span>
-                                           @enderror
-                                       </div>
-                                       <div class="form-group col-12">
+                                       <div class="form-group col-6">
                                            <label>Description</label>
                                            <input type="text" placeholder="Description {{$lang}}" name="{{$lang}}[description]"
                                                   value="{{old("$lang.description",isset($model) ? ($model->translateOrDefault($lang)->description ?? '') : '')}}"
@@ -108,28 +88,3 @@
         </div>
     </div>
 @endsection
-
-{{--@push('js')--}}
-{{--    <script>--}}
-{{--        $(document).ready(function (){--}}
-{{--            getCategoryAttributes($('.product-category').trigger('change').val());--}}
-{{--            const $product_id={{@isset($model) ? $model->id : ''}};--}}
-{{--            $('.product-category').on('change',function (){--}}
-{{--                getCategoryAttributes($(this).val());--}}
-{{--            });--}}
-
-{{--            function getCategoryAttributes($category_id){--}}
-{{--                $.ajax({--}}
-{{--                    method: 'get',--}}
-{{--                    url: "{{route('admin.category-attributes',['categoryId','productId'])}}"--}}
-{{--                        .replace('categoryId',$category_id)--}}
-{{--                        .replace('productId',$('.product-category').val()),--}}
-{{--                    success(response) {--}}
-{{--                        $('#attributes-area').html(response);--}}
-{{--                        $('#select2').select2();--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            }--}}
-{{--        });--}}
-{{--    </script>--}}
-{{--@endpush--}}

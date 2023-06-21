@@ -17,20 +17,20 @@ class FinishingController extends Controller
     public function index()
     {
         $models=$this->service->dataAllWithPaginate();
-        return view('admin.finishing.index',['models'=>$models]);
+        return view('admin.finish.index',['models'=>$models]);
     }
     public function create()
     {
-        return view('admin.finishing.form');
+        return view('admin.finish.form');
     }
     public function store(FinishingRequest $request)
     {
         $this->service->store($request);
-        return redirect()->route('admin.finishing.index');
+        return redirect()->route('admin.finish.index');
     }
     public function edit(Finishing $finishing)
     {
-        return view('admin.finishing.form',['model'=>$finishing]);
+        return view('admin.finish.form',['model'=>$finishing]);
     }
     public function update(FinishingRequest $finishingRequest, Finishing $finishing)
     {

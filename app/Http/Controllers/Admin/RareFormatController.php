@@ -17,20 +17,20 @@ class RareFormatController extends Controller
     public function index()
     {
         $models=$this->service->dataAllWithPaginate();
-        return view('admin.rare-format.index',['models'=>$models]);
+        return view('admin.rare.index',['models'=>$models]);
     }
     public function create()
     {
-        return view('admin.rare-format.form');
+        return view('admin.rare.form');
     }
     public function store(RareFormatRequest $request)
     {
         $this->service->store($request);
-        return redirect()->route('admin.rare-format.index');
+        return redirect()->route('admin.rare.index');
     }
     public function edit(RareFormat $rareFormat)
     {
-        return view('admin.rare-format.form',['model'=>$rareFormat]);
+        return view('admin.rare.form',['model'=>$rareFormat]);
     }
     public function update(RareFormatRequest $rareFormatRequest,RareFormat  $rareFormat)
     {
