@@ -1,14 +1,17 @@
 <?php
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BenefitController;
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\FinishingController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\GrandController;
+use App\Http\Controllers\Admin\HouseController;
 use App\Http\Controllers\Admin\InfrastructureController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RareFormatController;
 use App\Http\Controllers\Admin\StaticController;
 use App\Http\Controllers\Admin\TeamController;
@@ -69,6 +72,21 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function () {
 
     Route::resource('contact',ContactController::class)->except(['show']);
     Route::get('contact/status/{id}',[ContactController::class,'status'])->name('status-contact');
+
+
+
+    //projects-buildings
+    Route::resource('company',CompanyController::class)->except(['show']);
+
+    Route::resource('project',ProjectController::class)->except(['show']);
+
+    Route::get('house/{projectId}',[HouseController::class,'index'])->name('house.index');
+    Route::get('house/create/{projectId}',[HouseController::class,'create'])->name('house.create');
+//    Route::post('sort-product-image',[HouseController::class,'sort'])->name('product-image-sort');
+
+    Route::resource('house',HouseController::class)->except(['show','create','index']);
+    Route::get('house/status/{id}',[HouseController::class,'status'])->name('status-house');
+    Route::get('params/{projectId}/{houseId}',[HouseController::class,'getParams'])->name('get-project-params');
 
 
 

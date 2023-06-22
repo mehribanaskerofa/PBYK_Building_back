@@ -1,11 +1,8 @@
-@extends('admin.layouts.admin',['title'=>'Settings'])
+@extends('admin.layouts.admin',['title'=>'Project'])
 @section('content')
 
-    <?php  $routeName='admin.setting' ?><br>
-    @if(count($models)==0)
-        <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
-
-    @endif
+    <?php  $routeName='admin.project' ?><br>
+    <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
     <br>
     <div class="card ">
         <div class="card-body">
@@ -13,10 +10,13 @@
                 <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>Email</th>
-                    <th>Phone</th>
+                    <th>Title</th>
+                    <th>Address</th>
+                    <th>Floor</th>
+                    <th>Room</th>
+                    <th>Price</th>
+                    <th>Date</th>
                     <th>Image</th>
-                    <th>Icon</th>
                     <th style="width: 50px">Edit</th>
                     <th style="width: 50px">Delete</th>
                 </tr>
@@ -25,8 +25,12 @@
                 @foreach($models  as $model)
                     <tr>
                         <td>{{$model->id}}</td>
-                        <td>{{$model->email}}</td>
-                        <td>{{$model->phone}}</td>
+                        <td>{{$model->title}}</td>
+                        <td>{{$model->address}}</td>
+                        <td>{{$model->floor}}</td>
+                        <td>{{$model->room}}</td>
+                        <td>{{$model->price}}</td>
+                        <td>{{$model->date}}</td>
                         <td>
                             @isset($model->image)
                                 <div class="form-group">
@@ -34,7 +38,6 @@
                                 </div>
                             @endisset
                         </td>
-                        <td>{{$model->icon}}</td>
                         <td>
                             <a href="{{route($routeName.'.edit',$model->id)}}" class="btn btn-warning">Edit</a>
                         </td>
@@ -51,7 +54,7 @@
                 </tbody>
             </table>
             <br>
-{{--            {{$models->links('pagination::bootstrap-4')}}--}}
+            {{$models->links('pagination::bootstrap-4')}}
         </div>
     </div>
 @endsection

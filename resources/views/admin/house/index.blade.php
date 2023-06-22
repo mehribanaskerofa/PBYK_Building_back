@@ -1,9 +1,8 @@
-@extends('admin.layouts.admin',['title'=>'Finishing'])
+@extends('admin.layouts.admin',['title'=>'House '])
 @section('content')
 
-    <?php  $routeName='admin.finish' ?><br>
-
-    <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
+    <?php  $routeName='admin.house' ?><br>
+    <a class="btn btn-primary my-1" href="{{route($routeName.'.create',$projectId)}}">Add</a>
     <br>
     <div class="card ">
         <div class="card-body">
@@ -11,10 +10,15 @@
                 <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Status</th>
+                    <th>Project</th>
+                    <th>Floor</th>
+                    <th>Room</th>
+                    <th>Room number</th>
+                    <th>Area</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Layout</th>
+                    <th>Active</th>
                     <th style="width: 50px">Edit</th>
                     <th style="width: 50px">Delete</th>
                 </tr>
@@ -23,19 +27,24 @@
                 @foreach($models  as $model)
                     <tr>
                         <td>{{$model->id}}</td>
-                        <td>{{$model->title}}</td>
-                        <td>{{$model->description}}</td>
+                        <td>{{$model->project->title}}</td>
+                        <td>{{$model->floor}}</td>
+                        <td>{{$model->room}}</td>
+                        <td>{{$model->number}}</td>
+                        <td>{{$model->area}}</td>
+                        <td>{{$model->price}}</td>
+                        <td>{{$model->date}}</td>
                         <td>
-                            @isset($model->image)
+                            @isset($model->layout)
                                 <div class="form-group">
-                                    <img src="{{asset('storage/'.$model->image)}}" width="40px">
+                                    <img src="{{asset('storage/'.$model->layout)}}" width="40px">
                                 </div>
                             @endisset
                         </td>
                         <td>
                             <div class="form-check form-switch">
                                 <input class="form-check-input flexSwitchCheckChecked" type="checkbox" role="switch"
-                                       data-action="{{route('admin.status-finish',$model->id)}}"
+                                       data-action="{{route('admin.status-house',$model->id)}}"
                                        @if($model->active) checked @endif>
                             </div>
                         </td>

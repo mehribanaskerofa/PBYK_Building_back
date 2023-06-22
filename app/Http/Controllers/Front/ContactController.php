@@ -17,7 +17,7 @@ class ContactController extends Controller
     }
     public function index()
     {
-        $models=$this->service->dataAll();
+        $models=$this->service->dataAllWithPagination();
         return view('admin.contact.index',['models'=>$models]);
     }
     public function create()

@@ -2,27 +2,25 @@
 
 namespace App\Services\RepositoryService;
 
-use App\Models\Contact;
-use App\Repositories\ContactRepository;
+use App\Models\Company;
+use App\Repositories\CompanyRepository;
 use Illuminate\Support\Facades\Cache;
 
-class ContactService
+class CompanyService
 {
-    public function __construct(protected ContactRepository $repository)
+    public function __construct(protected CompanyRepository $repository)
     {
     }
-    public function dataAllWithPagination()
+    public function dataAllWithPaginate()
     {
-        return $this->repository->paginate(5);
+        return $this->repository->paginate(3);
     }
 
     public function store($request)
     {
         $data=$request->all();
 
-        $data['active']=$data['active'] ?? true;
-
-        $model= $this->repository->save($data,new Contact());
+        $model= $this->repository->save($data,new Company());
 
         self::ClearCached();
         return $model;
@@ -30,8 +28,6 @@ class ContactService
     public function update($request,$model)
     {
         $data=$request->all();
-
-        $data['active']=$data['active'] ?? true;
 
         $model=$this->repository->save($data,$model);
         self::ClearCached();
@@ -41,13 +37,12 @@ class ContactService
     public function delete($model)
     {
         self::ClearCached();
-        $this->fileUploadService->removeFile($model->image);
         return $this->repository->delete($model);
     }
 
-    public function CachedContacts()
+    public function CachedCompany()
     {
-        return Cache::rememberForever('contacts',
+        return Cache::rememberForever('company',
             function (){
                 return $this->repository->all();
             });
@@ -55,6 +50,6 @@ class ContactService
 
     public static function ClearCached()
     {
-        Cache::forget('contacts');
+        Cache::forget('company');
     }
 }
