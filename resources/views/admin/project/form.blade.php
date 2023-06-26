@@ -46,21 +46,12 @@
                                            <span class="text-danger">{{$message}}</span>
                                            @enderror
                                        </div>
-                                       <div class="form-group col-4">
+                                       <div class="form-group col-8">
                                            <label>Address</label>
                                            <input type="text" placeholder="address {{$lang}}" name="{{$lang}}[address]"
                                                   value="{{old("$lang.address",isset($model) ? ($model->translateOrDefault($lang)->address ?? '') : '')}}"
                                                   class="form-control">
                                            @error("$lang.address")
-                                           <span class="text-danger">{{$message}}</span>
-                                           @enderror
-                                       </div>
-                                       <div class="form-group col-4">
-                                           <label>Price</label>
-                                           <input type="text" placeholder="Price {{$lang}}" name="{{$lang}}[price]"
-                                                  value="{{old("$lang.price",isset($model) ? ($model->translateOrDefault($lang)->price ?? '') : '')}}"
-                                                  class="form-control">
-                                           @error("$lang.price")
                                            <span class="text-danger">{{$message}}</span>
                                            @enderror
                                        </div>
@@ -81,18 +72,10 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
+
                     <div class="form-group col-4">
-                        <label>Room count</label>
-                        <input type="number" placeholder="room count" name="room"
-                               value="{{old("room",isset($model) ? ($model->room ?? '') : '')}}"
-                               class="form-control">
-                        @error("room")
-                        <span class="text-danger">{{$message}}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group col-3">
                         <label>Date</label>
-                        <input type="date" class="mt-4" name="date"
+                        <input type="date" name="date"  class="form-control"
                                value="{{old("date",isset($model) ? ($model->date ?? '') : '')}}"
                                min="{{Carbon\Carbon::now()->format('d-m-y')}}"
                         >
@@ -100,19 +83,23 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
+                    <div class="form-group col-4">
                     @isset($model->image)
-                        <div class="form-group col-3">
-                            <img src="{{asset('storage/'.$model->image)}}" width="100px">
-                        </div>
+                            <img src="{{asset('storage/'.$model->image)}}"
+                                 class="object-fit-cover" width="100px" height="120px"
+                            >
                     @endisset
-                    <div class="form-group col-3">
+                    <div>
                         <label>Image</label>
                         <input type="file"  name="image" class="form-control">
                         @error('image')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
+                    </div>
+
                 </div>
+
 
                 <button class="btn btn-success">Save</button>
             </form>

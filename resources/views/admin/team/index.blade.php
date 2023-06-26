@@ -6,7 +6,7 @@
     <br>
     <div class="card ">
         <div class="card-body">
-            <table class="table table-bordered">
+            <table class="table table-bordered" style="text-align: center">
                 <thead>
                 <tr>
                     <th style="width: 10px">#</th>
@@ -25,7 +25,8 @@
                         <td>
                             @isset($model->image)
                                 <div class="form-group">
-                                    <img src="{{asset('storage/'.$model->image)}}" width="40px">
+                                    <img src="{{asset('storage/'.$model->image)}}"
+                                         class="object-fit-cover" width="70px" height="60px">
                                 </div>
                             @endisset
                         </td>

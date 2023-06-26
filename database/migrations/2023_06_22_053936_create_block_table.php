@@ -11,23 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
-            $table->id();
-            $table->string('image');
-            $table->integer('floor');
-            $table->string('date');
-            $table->timestamps();
-        });
-        Schema::create('project_translations', function (Blueprint $table) {
+        Schema::create('blocks', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id');
-            $table->string('locale')->index();
-            $table->string('title');
-            $table->string('address');
+            $table->integer('block');
+//            $table->integer('room');
+            $table->string('image');
+            $table->string('layout');
+            $table->string('date');
+            $table->timestamps();
 
-            $table->unique(['project_id', 'locale']);
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+
         });
+
     }
 
     /**
@@ -35,7 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('project_translations');
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('blocks');
     }
 };

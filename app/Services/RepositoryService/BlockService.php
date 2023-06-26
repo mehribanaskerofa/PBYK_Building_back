@@ -2,41 +2,36 @@
 
 namespace App\Services\RepositoryService;
 
-use App\Models\House;
-use App\Repositories\HouseRepository;
+use App\Models\Block;
+use App\Repositories\BlockRepository;
 use App\Services\FileUploadService;
 use Illuminate\Support\Facades\Cache;
-use function GuzzleHttp\Promise\queue;
 
-class HouseService
+class BlockService
 {
-    public function __construct(protected HouseRepository $repository,
+    public function __construct(protected BlockRepository $repository,
                                 protected FileUploadService $fileUploadService)
     {
     }
-    public function dataAllWithPaginate($projectId=0)
+    public function dataAllWithPaginate()
     {
-        if ($projectId!=0){
-            $houses=House::with(['block'=> function($query) use ($projectId){
-                $query->with('project')->where('project_id',$projectId);
-            }])->paginate(4);
-           return $houses;
-        }
-        return $this->repository->paginate(6,['translations']);
+        return $this->repository->paginate(6);
     }
 
     public function store($request)
     {
         $data=$request->all();
 
+        $data['image']=$this->fileUploadService
+            ->uploadFile($request->image,'house_layouts');
+
         $data['layout']=$this->fileUploadService
             ->uploadFile($request->layout,'house_layouts');
 
         $data['date']=$request->date ?? date('d-m-y');
-        $data['active']=$data['active'] ?? false;
 
 
-        $model= $this->repository->save($data,new House());
+        $model= $this->repository->save($data,new Block());
 
         self::ClearCached();
         return $model;
@@ -45,11 +40,14 @@ class HouseService
     {
         $data=$request->all();
 
+        if($request->has('image')){
+            $data['image']=$this->fileUploadService
+                ->replaceFile($request->image,$model->image,'house_layouts');
+        }
         if($request->has('layout')){
             $data['layout']=$this->fileUploadService
                 ->replaceFile($request->layout,$model->layout,'house_layouts');
         }
-        $data['active']=$data['active'] ?? false;
         $data['date']=$request->date ?? date('d-m-y');
 
         $model=$this->repository->save($data,$model);
@@ -64,16 +62,16 @@ class HouseService
         return $this->repository->delete($model);
     }
 
-    public function CachedHouses()
+    public function CachedBlocks()
     {
-        return Cache::rememberForever('houses',
+        return Cache::rememberForever('blocks',
             function (){
-                return $this->repository->all(with:['translations']);
+                return $this->repository->all();
             });
     }
 
     public static function ClearCached()
     {
-        Cache::forget('houses');
+        Cache::forget('blocks');
     }
 }

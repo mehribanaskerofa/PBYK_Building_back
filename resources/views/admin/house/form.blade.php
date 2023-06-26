@@ -2,7 +2,7 @@
 
 
 @section('content')
-    {{ $routeName='admin.house'}}
+    <?php $routeName='admin.house'?>
     <div class="card">
         <div class="card-body">
             <form action="{{ isset($model) ? route($routeName.'.update',$model->id) :  route($routeName.'.store')}}" method="POST" enctype="multipart/form-data">
@@ -11,12 +11,12 @@
                     @method('PUT')
                 @endisset
 
-{{--<input name="product_id" value="{{$productId}}" type="hidden">--}}
+{{--<input name="projectId" value="{{$productId}}" type="hidden">--}}
 
                 <div class="card card-primary card-tabs">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
-                            <li class="pt-2 px-3"><h3 class="card-title">Title</h3></li>
+                            <li class="pt-1 px-1"><h3 class="card-title">Title</h3></li>
                             @foreach(config('app.languages') as $langKey)
                                 <li class="nav-item ">
                                     <a class="nav-link
@@ -54,27 +54,50 @@
 
                 <div class="row">
 
-                    <div class="form-group col-6">
-                    <label for="item">Project</label>
-                    <select name="project_id" id="item" class="form-control project-params">
-                        @foreach($projects as $project)
-                        <option value="{{$project->id}}"
-                            @selected(old('project_id',(isset($model) ? $model->project_id : null))==$project->id)
-                        >{{$project->title}}</option>
+                    <div class="form-group col-2">
+                    <label for="item">Block</label>
+                    <select name="block_id" id="item" class="form-control">
+                        @foreach($blocks as $block)
+                        <option value="{{$block->id}}"
+                            @selected(old('block_id',(isset($model) ? $model->block_id : null))==$block->id)
+                        >{{$block->block}}</option>
                         @endforeach
                     </select>
-                        @error('project_id')
+                        @error('block_id')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
+                           <div class="form-group col-2">
+                               <label for="item">Floor</label>
+                               <select name="floor" id="item" class="form-control">
+                                   @for($i = 2; $i <=17; $i++)
+                                       <option value="{{$i}}"
+                                           @selected(old('floor',(isset($model) ? $model->floor : null))==$i)
+                                       >{{$i }} floor</option>
+                                   @endfor
+                               </select>
+                               @error('floor')
+                               <span class="text-danger">{{$message}}</span>
+                               @enderror
+                           </div>
+                           <div class="form-group col-2">
+                               <label for="item">Room</label>
+                               <select name="room" id="item" class="form-control">
+                                   @for($i = 1; $i <=6; $i++)
+                                       @if($i!=5)
+                                           <option value="{{$i}}"
+                                               @selected(old('room',(isset($model) ? $model->room : null))==$i)
+                                           >{{$i }}</option>
+                                       @endif
+                                   @endfor
+                               </select>
+                               @error('room')
+                               <span class="text-danger">{{$message}}</span>
+                               @enderror
+                           </div>
 
-                    <div class="form-group col-6">
-                       <div class="row" id="house-params">
 
-                       </div>
-                    </div>
-
-                    <div class="form-group col-6">
+                    <div class="form-group col-2">
                         <label>Area</label>
                         <input type="text" placeholder="Area" name="area"
                                value="{{old("area",isset($model) ? ($model->area ?? '') : '')}}"
@@ -83,12 +106,31 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
+                    <div class="form-group col-2">
+                        <label>Date</label>
+                        <input type="date" class="form-control" name="date"
+                               min="{{Carbon\Carbon::now()->format('d-m-y')}}"
+                               value="{{old("date",isset($model) ? ($model->date ?? '') : '')}}"
+                        >
+                        @error('date')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
+                    </div>
+                    <div class="form-group col-2 d-flex flex-column">
+                        <label>Active</label>
+                        <input type="checkbox" name="active" value="1" @checked(old('active',$model->active ?? ''))
+                        style="width: 20px;height: 20px"
+                        >
+                        @error('active')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
+                    </div>
                 </div>
 
                 <div class="row">
                     @isset($model->layout)
                         <div class="form-group col-3">
-                            <img src="{{asset('storage/'.$model->layout)}}" width="100px">
+                            <img src="{{asset('storage/'.$model->layout)}}" width="100px" height="50px">
                         </div>
                     @endisset
                     <div class="form-group col-3">
@@ -98,23 +140,7 @@
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-                        <div class="form-group col-3">
-                            <label>Date</label>
-                            <input type="date" class="mt-4 form-control" name="date"
-                                   min="{{Carbon\Carbon::now()->format('d-m-y')}}"
-                                   value="{{old("date",isset($model) ? ($model->date ?? '') : '')}}"
-                            >
-                            @error('date')
-                            <span class="text-danger">{{$message}}</span>
-                            @enderror
-                        </div>
-                    <div class="form-group col-3">
-                        <label>Active</label>
-                        <input type="checkbox" class="mt-4" name="active" value="1" @checked(old('active',$model->active ?? ''))>
-                        @error('active')
-                        <span class="text-danger">{{$message}}</span>
-                        @enderror
-                    </div>
+
 
                 </div>
 
@@ -124,25 +150,4 @@
     </div>
 @endsection
 
-@push('js')
-    <script>
-        $(document).ready(function (){
-            getCategoryAttributes($('.project-params').trigger('change').val());
-            $('.project-params').on('change',function (){
-                getCategoryAttributes($(this).val());
-            });
 
-            function getCategoryAttributes($project_id){
-                $.ajax({
-                    method: "get",
-                    url: "{{route('admin.get-project-params',['projectId','houseId'])}}"
-                        .replace('projectId',$project_id)
-                        .replace('houseId',$('.project-params').val()),
-                    success(response) {
-                        $('#house-params').html(response);
-                    }
-                });
-            }
-        });
-    </script>
-@endpush

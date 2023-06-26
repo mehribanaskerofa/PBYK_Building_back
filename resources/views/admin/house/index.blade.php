@@ -6,14 +6,13 @@
     <br>
     <div class="card ">
         <div class="card-body">
-            <table class="table table-bordered">
+            <table class="table table-bordered " style="text-align: center">
                 <thead>
                 <tr>
                     <th style="width: 10px">#</th>
-                    <th>Project</th>
+                    <th>Block</th>
                     <th>Floor</th>
                     <th>Room</th>
-                    <th>Room number</th>
                     <th>Area</th>
                     <th>Price</th>
                     <th>Date</th>
@@ -23,28 +22,29 @@
                     <th style="width: 50px">Delete</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody >
                 @foreach($models  as $model)
                     <tr>
                         <td>{{$model->id}}</td>
-                        <td>{{$model->project->title}}</td>
+                        <td>{{$model->block->block}}</td>
                         <td>{{$model->floor}}</td>
                         <td>{{$model->room}}</td>
-                        <td>{{$model->number}}</td>
                         <td>{{$model->area}}</td>
                         <td>{{$model->price}}</td>
                         <td>{{$model->date}}</td>
-                        <td>
+                        <td style="width: 100px">
                             @isset($model->layout)
                                 <div class="form-group">
-                                    <img src="{{asset('storage/'.$model->layout)}}" width="40px">
+                                    <img src="{{asset('storage/'.$model->layout)}}"
+                                         class="object-fit-cover" width="70px" height="60px">
                                 </div>
                             @endisset
                         </td>
-                        <td>
+                        <td style="width: 40px">
                             <div class="form-check form-switch">
                                 <input class="form-check-input flexSwitchCheckChecked" type="checkbox" role="switch"
                                        data-action="{{route('admin.status-house',$model->id)}}"
+                                       style="width: 40px;height: 20px"
                                        @if($model->active) checked @endif>
                             </div>
                         </td>

@@ -13,17 +13,16 @@ return new class extends Migration
     {
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('project_id');
+            $table->unsignedBigInteger('block_id');
             $table->integer('floor');
-            $table->integer('room');
-            $table->integer('number');
+            $table->integer('room');//static
             $table->string('area');
             $table->string('layout');
             $table->string('date');
             $table->boolean('active')->default(true);
             $table->timestamps();
 
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->foreign('block_id')->references('id')->on('blocks')->onDelete('cascade');
 
         });
         Schema::create('house_translations', function (Blueprint $table) {

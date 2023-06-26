@@ -15,8 +15,8 @@ class House extends Model implements TranslatableContract
     public $translationModel=HouseTranslation::class;
     public $translatedAttributes = ['price'];
 
-    public function project()
+    public function block()
     {
-        return $this->belongsTo(Project::class,'project_id','id');
+        return $this->belongsTo(Block::class,'block_id','id');
     }
 }

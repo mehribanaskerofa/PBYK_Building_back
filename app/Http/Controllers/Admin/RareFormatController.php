@@ -28,18 +28,18 @@ class RareFormatController extends Controller
         $this->service->store($request);
         return redirect()->route('admin.rare.index');
     }
-    public function edit(RareFormat $rareFormat)
+    public function edit(RareFormat $rare)
     {
-        return view('admin.rare.form',['model'=>$rareFormat]);
+        return view('admin.rare.form',['model'=>$rare]);
     }
-    public function update(RareFormatRequest $rareFormatRequest,RareFormat  $rareFormat)
+    public function update(RareFormatRequest $rareFormatRequest,RareFormat  $rare)
     {
-        $this->service->update($rareFormatRequest,$rareFormat);
+        $this->service->update($rareFormatRequest,$rare);
         return redirect()->back();
     }
-    public function destroy(RareFormat $rareFormat)
+    public function destroy(RareFormat $rare)
     {
-        $this->service->delete($rareFormat);
+        $this->service->delete($rare);
         return redirect()->back();
     }
     public function status($id)

@@ -13,6 +13,6 @@ class Finishing extends Model implements TranslatableContract
     protected $table='finishings';
     protected $guarded=[];
     public $translationModel=FinishingTranslation::class;
-    public $translatedAttributes = ['title'];
+    public $translatedAttributes = ['title','description'];
 
 }

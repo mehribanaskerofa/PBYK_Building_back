@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BenefitController;
+use App\Http\Controllers\Admin\BlockController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\FinishingController;
 use App\Http\Controllers\Admin\GalleryController;
@@ -79,6 +80,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function () {
     Route::resource('company',CompanyController::class)->except(['show']);
 
     Route::resource('project',ProjectController::class)->except(['show']);
+    Route::resource('block',BlockController::class)->except(['show']);
 
     Route::get('house/{projectId}',[HouseController::class,'index'])->name('house.index');
     Route::get('house/create/{projectId}',[HouseController::class,'create'])->name('house.create');
@@ -86,7 +88,6 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function () {
 
     Route::resource('house',HouseController::class)->except(['show','create','index']);
     Route::get('house/status/{id}',[HouseController::class,'status'])->name('status-house');
-    Route::get('params/{projectId}/{houseId}',[HouseController::class,'getParams'])->name('get-project-params');
 
 
 

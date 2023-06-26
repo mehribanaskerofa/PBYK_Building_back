@@ -11,7 +11,6 @@ class ProjectRequest extends FormRequest
     {
         $data= [
             'floor'=>'numeric|min:0',
-            'room'=>'numeric|min:0',
             'date'=>'date|after:today',
             'image'=>[Rule::requiredIf(request()->method==self::METHOD_POST),'image','mimes:jpg,jpeg,png'],
         ];
@@ -22,7 +21,6 @@ class ProjectRequest extends FormRequest
         foreach (config('app.languages') as $lang){
             $data[$lang]='required|array';
             $data["$lang.address"]='required|string|min:2';
-            $data["$lang.price"]='string';
             $data["$lang.title"]='string';
         }
         return $data;

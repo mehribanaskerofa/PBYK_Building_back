@@ -29,18 +29,18 @@ class FinishingController extends Controller
         $this->service->store($request);
         return redirect()->route('admin.finish.index');
     }
-    public function edit(Finishing $finishing)
+    public function edit(Finishing $finish)
     {
-        return view('admin.finish.form',['model'=>$finishing]);
+        return view('admin.finish.form',['model'=>$finish]);
     }
-    public function update(FinishingRequest $finishingRequest, Finishing $finishing)
+    public function update(FinishingRequest $finishingRequest, Finishing $finish)
     {
-        $this->service->update($finishingRequest,$finishing);
+        $this->service->update($finishingRequest,$finish);
         return redirect()->back();
     }
-    public function destroy(Finishing $finishing)
+    public function destroy(Finishing $finish)
     {
-        $this->service->delete($finishing);
+        $this->service->delete($finish);
         return redirect()->back();
     }
     public function status($id)

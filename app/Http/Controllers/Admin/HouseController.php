@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HouseRequest;
 use App\Models\House;
 use App\Models\Project;
+use App\Services\RepositoryService\BlockService;
 use App\Services\RepositoryService\HouseService;
 use App\Services\RepositoryService\ProjectService;
 use Faker\Core\Number;
@@ -22,21 +23,22 @@ class HouseController extends Controller
         $models=$this->houseService->dataAllWithPaginate($projectId);
         return view('admin.house.index',['models'=>$models,'projectId'=>$projectId]);
     }
-    public function create($projectId=0,ProjectService $projectService)
+    public function create($projectId=0,BlockService $blockService)
     {
-        $projects=$projectService->CachedProjects();
-        return view('admin.house.form',compact('projectId','projects'));
+        $blocks=$blockService->CachedBlocks();
+        return view('admin.house.form',compact('projectId','blocks'));
     }
     public function store(HouseRequest $request)
     {
+        dd($request->project_id);
         $this->houseService->store($request);
-        return redirect()->route('admin.house.index',$request->project_id);
+        return redirect()->route('admin.house.index',['projectId',$request->project_id]);
     }
-    public function edit(House $house)
+    public function edit(House $house,BlockService $blockService)
     {
         //        $categories=$categoryService->CachedCategories();
-
-        return view('admin.house.form',['model'=>$house,'productId'=>$house->project_id]);
+        $blocks=$blockService->CachedBlocks();
+        return view('admin.house.form',['model'=>$house,'blocks'=>$blocks,'productId'=>$house->project_id]);
     }
     public function update(HouseRequest $houseRequest,House $house)
     {
@@ -57,16 +59,5 @@ class HouseController extends Controller
 
         return response()->json(['success'=>'Status change successfully.']);
     }
-    public function getParams($projectId, $houseId=null)
-    {
-        $project=Project::where('id',$projectId)->first();
 
-        if($houseId){
-            $selectedNumbers=House::where('project_id',$projectId)->pluck('number');
-            $house=House::where('id',$houseId)->first();
-        }
-
-        return view('admin.house.projectparams',
-            compact('project','selectedNumbers','house'))->render();
-    }
 }

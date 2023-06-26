@@ -10,10 +10,9 @@ class HouseRequest extends FormRequest
     public function rules(): array
     {
         $data= [
-            'project_id'=>'numeric|exists:projects,id',
+            'block_id'=>'numeric|exists:blocks,id',
             'floor'=>'numeric|min:0',
             'room'=>'numeric|min:0',
-            'number'=>'numeric|min:0',
             'area'=>'string',
             'date'=>'date|after:today',
             'active'=>'nullable|boolean',

@@ -60,6 +60,10 @@
                 <span>Buildings </span></a>
         </li>
         <li class="nav-item">
+            <a href="{{route('admin.block.index')}}" class="nav-link">
+                <span>Block </span></a>
+        </li>
+        <li class="nav-item">
             <a href="{{route('admin.house.index',$projectId=0)}}" class="nav-link">
                 <span>Houses </span></a>
         </li>

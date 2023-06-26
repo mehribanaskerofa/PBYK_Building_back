@@ -14,27 +14,16 @@
 <div class="form-group col-4">
     <label for="item">Room</label>
     <select name="room" id="item">
-        @for($i = 1; $i <=intval($project->room); $i++)
+        @for($i = 1; $i <=6; $i++)
+            @if($i!=5)
             <option value="{{$i}}"
                 @selected(old('room',(isset($house) ? $house->room : null))==$i)
             >{{$i }}</option>
+            @endif
         @endfor
     </select>
     @error('room')
     <span class="text-danger">{{$message}}</span>
     @enderror
 </div>
-<div class="form-group col-4">
-    <label for="item">House number</label>
-    <select name="number" id="item">
-        <?php $numberCount= intval($project->room)*intval($project->floor) ?>
-        @for($i = 1; $i <=$numberCount; $i++)
-            <option value="{{$i}}"
-                @selected(old('number',(isset($house) ? $house->number : null))==$i)
-            >{{$i }}</option>
-        @endfor
-    </select>
-    @error('number')
-    <span class="text-danger">{{$message}}</span>
-    @enderror
-</div>
+
