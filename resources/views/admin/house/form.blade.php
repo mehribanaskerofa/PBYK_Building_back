@@ -70,7 +70,7 @@
                            <div class="form-group col-2">
                                <label for="item">Floor</label>
                                <select name="floor" id="item" class="form-control">
-                                   @for($i = 2; $i <=17; $i++)
+                                   @for($i = 2; $i <=14; $i++)
                                        <option value="{{$i}}"
                                            @selected(old('floor',(isset($model) ? $model->floor : null))==$i)
                                        >{{$i }} floor</option>

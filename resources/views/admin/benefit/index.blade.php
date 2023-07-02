@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin',['title'=>'Benefit'])
 @section('content')
 
-    <?php  $routeName='admin.benefit' ?><br>
+    <?php  $routeName='admin.benefit' ?>
     <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
     <br>
     <div class="card ">
@@ -33,14 +33,14 @@
                             @endisset
                         </td>
                         <td>
-                            <a href="{{route($routeName.'.edit',$model->id)}}" class="btn btn-warning">Edit</a>
-                        </td>
-                        <td>
                             <div class="form-check form-switch">
                                 <input class="form-check-input flexSwitchCheckChecked" type="checkbox" role="switch"
                                        data-action="{{route('admin.status-benefit',$model->id)}}"
                                        @if($model->active) checked @endif>
                             </div>
+                        </td>
+                        <td>
+                            <a href="{{route($routeName.'.edit',$model->id)}}" class="btn btn-warning">Edit</a>
                         </td>
                         <td>
                             <form class="delete-form" action="{{ route($routeName.'.destroy',$model->id) }}" method="POST">

@@ -73,5 +73,8 @@
     <a href="{{route('admin.contact.index')}}" class="nav-link"><i class="icon-phone-hang-up"></i> <span>Contact</span></a>
 </li>
 <li class="nav-item ">
+    <a href="{{route('admin.setting.index')}}" class="nav-link"><i class="icon-terminal"></i> <span>Setting</span></a>
+</li>
+<li class="nav-item ">
     <a href="{{route('clear-cache')}}" class="nav-link"><i class="icon-clear-formatting"></i> <span>Clear cache</span></a>
 </li>

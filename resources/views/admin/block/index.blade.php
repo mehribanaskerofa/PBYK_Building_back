@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin',['title'=>'Block '])
 @section('content')
 
-    <?php  $routeName='admin.block' ?><br>
+    <?php  $routeName='admin.block' ?>
     <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
     <br>
     <div class="card ">
@@ -26,19 +26,19 @@
                         <td>{{$model->project->title}}</td>
                         <td>{{$model->block}}</td>
                         <td>{{$model->date}}</td>
-                        <td style="width: 100px">
+                        <td style="width: 80px">
                             @isset($model->image)
                                 <div class="form-group" >
                                     <img src="{{asset('storage/'.$model->image)}}"
-                                         class="object-fit-cover" width="70px" height="60px">
+                                         class="object-fit-cover" width="70px" height="30px">
                                 </div>
                             @endisset
                         </td>
-                        <td style="width: 100px">
+                        <td style="width: 80px">
                             @isset($model->layout)
                                 <div class="form-group">
                                     <img src="{{asset('storage/'.$model->layout)}}"
-                                         class="object-fit-cover" width="70px" height="60px">
+                                         class="object-fit-cover" width="70px" height="30px">
                                 </div>
                             @endisset
                         </td>

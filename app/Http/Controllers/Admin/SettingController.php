@@ -19,8 +19,8 @@ class SettingController extends Controller
     }
     public function index()
     {
-        $models=$this->service->data();
-        return view('admin.setting.index',['models'=>$models]);
+        $model=$this->service->data();
+        return view('admin.setting.index',['model'=>$model]);
     }
     public function create()
     {

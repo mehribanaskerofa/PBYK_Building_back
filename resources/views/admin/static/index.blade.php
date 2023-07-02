@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin',['title'=>'Static words'])
 @section('content')
 
-    <?php  $routeName='admin.static' ?><br>
+    <?php  $routeName='admin.static' ?>
     <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
     <br>
     <div class="card ">

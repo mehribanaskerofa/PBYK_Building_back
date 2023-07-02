@@ -15,7 +15,7 @@ class ProjectService
     }
     public function dataAllWithPaginate()
     {
-        return $this->repository->paginate(4,['translations']);
+        return $this->repository->paginate(5,['translations']);
     }
 
     public function store($request)

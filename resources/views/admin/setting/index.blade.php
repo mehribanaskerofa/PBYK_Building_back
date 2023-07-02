@@ -1,10 +1,9 @@
 @extends('admin.layouts.admin',['title'=>'Settings'])
 @section('content')
 
-    <?php  $routeName='admin.setting' ?><br>
-    @if(count($models)==0)
+    <?php  $routeName='admin.setting' ?>
+    @if(!$model)
         <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
-
     @endif
     <br>
     <div class="card ">
@@ -22,7 +21,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($models  as $model)
+                @isset($model)
                     <tr>
                         <td>{{$model->id}}</td>
                         <td>{{$model->email}}</td>
@@ -48,7 +47,7 @@
                         </td>
 
                     </tr>
-                @endforeach
+                @endisset
                 </tbody>
             </table>
             <br>

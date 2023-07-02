@@ -19,13 +19,13 @@ class PageRequest extends FormRequest
         foreach (config('app.languages') as $lang){
             $data[$lang]='required|array';
             $data["$lang.title"]='required|string|min:2';
-            $data["$lang.description"]='string';
-            $data["$lang.btn"]='required|string|min:2';
+            $data["$lang.description"]='nullable';
+            $data["$lang.button"]='required|string|min:2';
             $data["$lang.slug"]=[
                 'required','string',
-                Rule::unique('product_translations','slug')
+                Rule::unique('page_translations','slug')
                     ->where('locale',$lang)
-                    ->ignore($this->route('product')?->id,'product_id')];
+                    ->ignore($this->route('page')?->id,'page_id')];
         }
         return $data;
     }

@@ -1,4 +1,4 @@
-@extends('admin.layouts.admin',['title'=>'Project'])
+@extends('admin.layouts.admin',['title'=>'Building'])
 
 
 @section('content')

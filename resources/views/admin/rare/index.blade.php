@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin',['title'=>'Rare Format'])
 @section('content')
 
-    <?php  $routeName='admin.rare' ?><br>
+    <?php  $routeName='admin.rare' ?>
     <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
     <br>
     <div class="card ">

@@ -15,7 +15,7 @@ class BlockService
     }
     public function dataAllWithPaginate()
     {
-        return $this->repository->paginate(6);
+        return $this->repository->paginate(4);
     }
 
     public function store($request)

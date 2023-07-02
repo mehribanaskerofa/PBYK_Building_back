@@ -21,6 +21,7 @@ class ContactService
         $data=$request->all();
 
         $data['active']=$data['active'] ?? true;
+        $data['notice']=$data['notice'] ?? '';
 
         $model= $this->repository->save($data,new Contact());
 

@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin',['title'=>'House '])
 @section('content')
 
-    <?php  $routeName='admin.house' ?><br>
+    <?php  $routeName='admin.house' ?>
     <a class="btn btn-primary my-1" href="{{route($routeName.'.create',$projectId)}}">Add</a>
     <br>
     <div class="card ">
@@ -32,11 +32,11 @@
                         <td>{{$model->area}}</td>
                         <td>{{$model->price}}</td>
                         <td>{{$model->date}}</td>
-                        <td style="width: 100px">
+                        <td style="width: 80px">
                             @isset($model->layout)
                                 <div class="form-group">
                                     <img src="{{asset('storage/'.$model->layout)}}"
-                                         class="object-fit-cover" width="70px" height="60px">
+                                         class="object-fit-cover" width="70px" height="30px">
                                 </div>
                             @endisset
                         </td>

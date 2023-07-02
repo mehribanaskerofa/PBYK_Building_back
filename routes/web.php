@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Http\Controllers\Front\CardController;
+use App\Http\Controllers\Front\ContactFrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/a', function () {
-    return view('welcome');
-});
+    return view('front.index');
+})->name('home-index');
 
 
+Route::post('contact-send',[ContactFrontController::class,'store'])->name('contact-send');
+Route::get('cards',[CardController::class,'index'])->name('cards');

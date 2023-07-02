@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <?php  $routeName='admin.contact' ?><br>
+    <?php  $routeName='admin.contact' ?>
     <div class="card">
         <div class="card-body">
             <form action="{{ isset($model) ? route($routeName.'.update',$model->id) :  route($routeName.'.store')}}" method="POST" enctype="multipart/form-data">

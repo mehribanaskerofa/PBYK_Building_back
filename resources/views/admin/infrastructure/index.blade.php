@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin',['title'=>'Infrastructure'])
 @section('content')
 
-    <?php  $routeName='admin.infrastructure' ?><br>
+    <?php  $routeName='admin.infrastructure' ?>
     <a class="btn btn-primary my-1" href="{{route($routeName.'.create')}}">Add</a>
     <br>
     <div class="card ">

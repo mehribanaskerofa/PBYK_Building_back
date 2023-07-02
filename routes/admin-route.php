@@ -1,8 +1,10 @@
 <?php
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BenefitController;
 use App\Http\Controllers\Admin\BlockController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FinishingController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\GrandController;
@@ -14,10 +16,10 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RareFormatController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\StaticController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\ConfigurationController;
-use App\Http\Controllers\Front\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin/login',[AdminController::class,'loginView'])->name('admin.login-view');
@@ -74,6 +76,7 @@ Route::group(['prefix'=>'admin','as'=>'admin.'],function () {
     Route::resource('contact',ContactController::class)->except(['show']);
     Route::get('contact/status/{id}',[ContactController::class,'status'])->name('status-contact');
 
+    Route::resource('setting',SettingController::class)->except(['show']);
 
 
     //projects-buildings

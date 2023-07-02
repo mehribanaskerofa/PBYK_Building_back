@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
             $table->string('phone');
-            $table->string('notice');
+            $table->string('notice')->default('');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

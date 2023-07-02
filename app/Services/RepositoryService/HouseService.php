@@ -22,7 +22,7 @@ class HouseService
             }])->paginate(4);
            return $houses;
         }
-        return $this->repository->paginate(6,['translations']);
+        return $this->repository->paginate(5,['translations']);
     }
 
     public function store($request)
