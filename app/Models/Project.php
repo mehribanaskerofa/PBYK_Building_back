@@ -16,8 +16,8 @@ class Project extends Model implements TranslatableContract
     public $translatedAttributes = ['title','address','price'];
 //    protected $dateFormat='dd-mm-yyyy';
 
-    public function houses()
+    public function blocks()
     {
-        return $this->hasMany(House::class,'project_id','id');
+        return $this->hasMany(Block::class,'project_id','id');
     }
 }

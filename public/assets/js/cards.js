@@ -1,11 +1,9 @@
         // slider
         var swiper12 = new Swiper(".cardSwiper", {
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-            },
+            slidesPerView: 1,
+            spaceBetween: 10,
             scrollbar: {
-              el: ".filter-for-cards .swiper-scrollbar",
+              el: ".cardSwiper .swiper-scrollbar",
               // hide: true,
             },
 

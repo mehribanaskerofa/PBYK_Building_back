@@ -33,10 +33,11 @@ function filterCards() {
   const maxArea = parseInt(maxAreaSlider.value);
   const selectedRooms = [];
 
-  for (let i = 0; i < roomFilters.length; i++) {
-    if (roomFilters[i].classList.contains('selected')) { 
-    }
-  }
+  // for (let i = 0; i < roomFilters.length; i++) {
+  //   if (roomFilters[i].classList.contains('selected')) {
+  //
+  //   }
+  // }
 
   minPriceLabel.textContent = '$' + minPrice;
   maxPriceLabel.textContent = '$' + maxPrice;
@@ -47,7 +48,9 @@ function filterCards() {
     const card = cards[i];
     const cardPrice = parseInt(card.getAttribute('data-price'));
     const cardArea = parseInt(card.getAttribute('data-area'));
-    const cardRooms = card.getAttribute('data-rooms');
+    const cardRooms = parseInt(card.getAttribute('data-rooms'));
+
+    console.log(cardRooms);
 
     if (
       cardPrice >= minPrice &&

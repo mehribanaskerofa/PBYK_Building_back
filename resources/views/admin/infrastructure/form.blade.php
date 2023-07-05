@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group col-3">
                             <label>Date</label>
-                            <input type="datetime-local" class="mt-4" name="date" min="{{Carbon\Carbon::now()->format('Y-m-d\Th:i:s')}}">
+                            <input type="date" class="mt-4" name="date" min="{{Carbon\Carbon::now()->format('Y-m-d\Th:i:s')}}">
                             @error('date')
                             <span class="text-danger">{{$message}}</span>
                             @enderror

@@ -12,33 +12,34 @@
                 @endisset
 
                 <div class="row">
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label>Email</label>
-                        <input type="text" class="mt-4" name="email"
+                        <input type="text" class="form-control" name="email"
                                value="{{old("email",isset($model) ? ($model->email ?? '') : '')}}"                        >
                         @error('email')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label>Phone</label>
-                        <input type="text" class="mt-4" name="phone"
-                               value="{{old("phone",isset($model) ? ($model->phone ?? '') : '')}}"                        >
+                        <input type="text" class="form-control" name="phone"
+                               value="{{old("phone",isset($model) ? ($model->phone ?? '') : '')}}"
+                        >
                         @error('phone')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
-                    <div class="form-group col-3">
+                    <div class="form-group col-4">
                         <label>Icon</label>
-                        <input type="text" class="mt-4" name="icon"
+                        <input type="text" class="form-control" name="icon"
                                value="{{old("icon",isset($model) ? ($model->icon ?? '') : '')}}"                        >
                         @error('icon')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
                 @isset($model->image)
-                        <div class="form-group col-3">
-                            <img src="{{asset('storage/'.$model->image)}}" width="100px">
+                        <div class="form-group col-2">
+                            <img src="{{asset('storage/'.$model->image)}}" width="150px">
                         </div>
                     @endisset
                     <div class="form-group col-3">

@@ -24,7 +24,7 @@ class StaticController extends Controller
     }
     public function store()
     {
-        $this->service->store(request()->all());
+        $this->service->store();
         return redirect()->route('admin.static.index');
     }
     public function edit(StaticModel $static)

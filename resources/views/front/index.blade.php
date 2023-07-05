@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="header-bottom-img">
-                <img src="{{asset('storage/yasayis.jpg')}}" alt="wow"  id="scroll-image">
+                <img src="{{asset('storage/'.$setting->image)}}" alt="yasayis-park"  id="scroll-image">
             </div>
         </div>
     </section>
@@ -23,13 +23,21 @@
         <div class="container">
             <div class="about-container w">
                 <div class="about-left">
-                    <span>About</span>
+                    <span>{{$menus[0]->name}}</span>
                 </div>
                 <div class="about-right">
                     <div class="about-right-title">
                         <div class="about-right-title-1">{{$about->title}}</div>
                     </div>
                     <div class="about-right-text">
+{{--                        <p>{{implode('', array_slice('!', 0, strlen($about->description) / 2))}}</p>--}}
+                       <?php
+                       $parts = explode('!', $about->description);
+                       $firstPart = $parts[0];
+                       $secondPart = $parts[1];
+                       ?>
+{{--                        <p>{{$firstPart}}</p>--}}
+{{--                        <p>{{$secondPart}}</p>--}}
                         <p>{{$about->description}}</p>
                     </div>
                     <div class="about-right-image">
@@ -50,11 +58,11 @@
                     </div>
                     <div class="river-context">
                         <p>{{$river->description}}</p>
-                        <p>The choice is yours!</p>
+{{--                        <p>The choice is yours!</p>--}}
                     </div>
                 </div>
                 <div class="river-image">
-                    <img src="{{asset('assets/image/river_frame.svg')}}" alt="river">
+                    <img src="{{asset('storage/map.jpg')}}" width="100%" height="350px" alt="river">
                 </div>
             </div>
         </div>
@@ -65,16 +73,16 @@
             <div class="location-container w">
 
                 <div class="location-top">
-                    <div class="location-name"><span>Location</span></div>
+                    <div class="location-name"><span>{{$menus[1]->name}}</span></div>
                     <div class="location-head">
                         <div class="location-text">
                             <div class="location-text-img"><img src="{{asset('assets/image/location-metro.svg')}}" alt=""></div>
                             <div class="location-texts">
-                                <div class="location-text-head"><span>TEKHNOPARK STATION</span></div>
-                                <div class="location-text-body"><span>7 minute walk</span></div>
+                                <div class="location-text-head"><span>{{$location->button}}</span></div>
+                                <div class="location-text-body"><span>100 m</span></div>
                             </div>
                         </div>
-                        <div class="location-title"><span>900 METERS TO THE METRO</span></div>
+                        <div class="location-title"><span>{{$location->title}}</span></div>
                     </div>
                 </div>
 
@@ -82,68 +90,39 @@
                 <div class="location-bottom">
                     <div class="location-bottom-container">
                         <div class="location-items">
-
+                        @foreach($adverts as $advert)
                             <div class="location-item">
                                 <div class="location-item-content">
-                                    <div class="location-item-title"><span>Dream Island</span></div>
-                                    <div class="location-item-text"><span>Amusement park</span></div>
+                                    <div class="location-item-title"><span>{{$advert->title}}</span></div>
+                                    <div class="location-item-text"><span>{{$advert->description}}</span></div>
                                 </div>
                                 <div class="location-item-subtext">
-                                    <p><i class="fa-solid fa-person-walking"></i><span>10 min</span></p>
+                                    <p><i class="fa-solid fa-person-walking"></i><span>{{$advert->button}}</span></p>
                                 </div>
                                 <div class="location-item-img">
-                                    <img src="{{asset('assets/image/location-img.jpg')}}" alt="">
+                                    <img src="{{asset('storage/'.$advert->image)}}" alt="">
                                 </div>
                             </div>
-                            <div class="location-item">
-                                <div class="location-item-content">
-                                    <div class="location-item-title"><span>Dream Island</span></div>
-                                    <div class="location-item-text"><span>Amusement park</span></div>
-                                </div>
-                                <div class="location-item-subtext">
-                                    <p><i class="fa-solid fa-person-walking"></i><span>10 min</span></p>
-                                </div>
-                                <div class="location-item-img">
-                                    <img src="{{asset('assets/image/location-img.jpg')}}" alt="">
-                                </div>
-                            </div>
-                            <div class="location-item">
-                                <div class="location-item-content">
-                                    <div class="location-item-title"><span>Dream Island</span></div>
-                                    <div class="location-item-text"><span>Amusement park</span></div>
-                                </div>
-                                <div class="location-item-subtext">
-                                    <p><i class="fa-solid fa-person-walking"></i><span>10 min</span></p>
-                                </div>
-                                <div class="location-item-img">
-                                    <img src="{{asset('assets/image/location-img.jpg')}}" alt="">
-                                </div>
-                            </div>
-                            <div class="location-item">
-                                <div class="location-item-content">
-                                    <div class="location-item-title"><span>Dream Island</span></div>
-                                    <div class="location-item-text"><span>Amusement park</span></div>
-                                </div>
-                                <div class="location-item-subtext">
-                                    <p><i class="fa-solid fa-person-walking"></i><span>10 min</span></p>
-                                </div>
-                                <div class="location-item-img">
-                                    <img src="{{asset('assets/image/location-img.jpg')}}" alt="">
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <div class="location-map">
                             <div class="location-map-item">
                                 <div class="location-map-iframe">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12152.040360590201!2d49.84354274008791!3d40.408627256238795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2saz!4v1686032929335!5m2!1sen!2saz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                </div>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12121.094524169926!2d49.67590498251894!3d40.57971512922816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x403091b91564be6f%3A0x89975659cc2a3ebe!2sX%C9%99zri%20Rezidens!5e0!3m2!1sru!2saz!4v1688501911640!5m2!1sru!2saz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="location-bottom-context">
                         <div class="location-sticky">
-                            <p>The location gives you a new, just-built infrastructure with kindergartens and schools, parks and sports complexes. Nagatinskaya Floodplain has become the center of a business cluster.</p>
-                            <p>The Tekhnopark metro is surrounded by shopping and business centers.</p>
+                            <?php
+                            $parts1 = explode('!', $location->description);
+//                            dd($parts1)
+//                            $firstPart1 = $parts1[0];
+//                            $secondPart1 = $parts1[1];
+                            ?>
+{{--                            <p>{{$parts1[0]}}</p>--}}
+                            <p>{!! $location->description !!}</p>
+{{--                            <p>{{$secondPart1}}</p>--}}
                         </div>
                         <button class="map-btn">
                             Смотреть на карте
@@ -159,14 +138,13 @@
         <div class="container">
             <div class="contact-container w">
                 <div class="contact-content">
-                    <h1>WANT TO LIVE <br> HERE? <span>Leave your contacts and we will call you back</span></h1>
+                    <h1>{{$contact->title}}  <span>{{$contact->description}}</span></h1>
                 </div>
                 <div class="contact-context">
                     <div class="contact-form">
                         <form
                             action="{{route('contact-send')}}"
-                            method="post"
-id="contactBtn-1"
+                            method="post"  id="contactBtn-1"
 {{--                              onsubmit="this.preventDefault();"--}}
                         >
                             @csrf
@@ -175,12 +153,12 @@ id="contactBtn-1"
                                    <input id="phone-input-1" type="tel" name="phone" />
                                     <input type="hidden" id="countryCode" name="countryCode">
                                 </div>
-                                <button class="contact-form-button"  >Send</button>
+                                <button class="contact-form-button"  >{{$contact->button}}</button>
                             </div>
                         </form>
                     </div>
                     <div class="contact-subtext">
-                        <span>I consent to the processing of </span><a href="">personal data</a>
+{{--                        <span>I consent to the processing of </span><a href="">personal data</a>--}}
                     </div>
                 </div>
             </div>
@@ -189,9 +167,8 @@ id="contactBtn-1"
 
     <section class="benefites w" id="benefits">
         <div class="benefit-head">
-            <div class="benefit-name"><span>Benefits</span></div>
-            <div class="benefit-head-title"><span>WOW-HOUSE HAS EVERYTHING, INCLUDING AN OFFICE BLOCK AND A
-              KINDERGARTEN</span></div>
+            <div class="benefit-name"><span>{{$menus[2]->name}}</span></div>
+            <div class="benefit-head-title"><span>{{$statics->where('id',9)->first()->title}}</span></div>
         </div>
         <div class="benefits-slider w">
             <div class="swiper">
@@ -230,27 +207,27 @@ id="contactBtn-1"
             <div class="specious-rooms">
 
                 <div class="specious-room">
-                    <div class="specious-room-container" style="background-image: url('{{asset('assets/image/light2.jpg')}}');">
+                    <div class="specious-room-container" style="background-image: url('{{asset('storage/'.$apart->image)}}');">
                         <div class="back-black"></div>
                         <div class="specious-room-content">
                             <div class="specious-room-context">
-                                <div class="specious-room-title"><p>SPACIOUS STORAGE ROOMS</p></div>
-                                <div class="specious-room-text"><p>Use your apartment to 100 percent. It's easy if you store things in the storerooms. Tires, ski suits, bicycles - there's room for everything.</p></div>
+                                <div class="specious-room-title"><p>{{$apart->title}}</p></div>
+                                <div class="specious-room-text"><p>{{$apart->description}}</p></div>
                             </div>
-                            <div class="specious-room-button"><a>Select storage rooms</a></div>
+{{--                            <div class="specious-room-button"><a>Select storage rooms</a></div>--}}
                         </div>
                     </div>
                 </div>
 
                 <div class="specious-room">
-                    <div class="specious-room-container" style="background-image: url('{{asset('assets/image/benefit.jpg')}}');">
+                    <div class="specious-room-container" style="background-image: url('{{asset('storage/'.$parking->image)}}');">
                         <div class="back-black"></div>
                         <div class="specious-room-content">
                             <div class="specious-room-context">
-                                <div class="specious-room-title"><p>SPACIOUS STORAGE ROOMS</p></div>
-                                <div class="specious-room-text"><p>Use your apartment to 100 percent. It's easy if you store things in the storerooms. Tires, ski suits, bicycles - there's room for everything.</p></div>
+                                <div class="specious-room-title"><p>{{$parking->title}}</p></div>
+                                <div class="specious-room-text"><p>{{$parking->description}}</p></div>
                             </div>
-                            <div class="specious-room-button"><a>Select storage rooms</a></div>
+{{--                            <div class="specious-room-button"><a>Select storage rooms</a></div>--}}
                         </div>
                     </div>
                 </div>
@@ -262,7 +239,7 @@ id="contactBtn-1"
     <section class="grand w" id="storagerooms">
         <div class="container">
             <div class="grand-content">
-                <div class="grand-head"><span>GRAND LOBBY</span></div>
+                <div class="grand-head"><span>{{$statics->where('id',10)->first()->title}}</span></div>
                 <div class="grand-items">
                     @foreach($grands as $grand)
                     <div class="grand-container">
@@ -287,34 +264,24 @@ id="contactBtn-1"
         <!-- <div class="container"> -->
         <div class="infs">
             <div class="inf-head">
-                <div class="inf-head-subtitle"><span>Infrastructure</span></div>
-                <div class="inf-head-title"><span>ETRAFDAKI PARKLAR, TICARET MERKEZLERI VE IASE OBYEKTLERI</span></div>
+                <div class="inf-head-subtitle"><span>{{$menus[6]->name}}</span></div>
+                <div class="inf-head-title"><span>{{$statics->where('id',11)->first()->title}}</span></div>
                 <div class="custom-pagination" id="infs">
-                    <div class="pagination-item"><span>Riviera Mall</span></div>
-                    <div class="pagination-item"><span>Kolomenskoye</span></div>
-                    <div class="pagination-item"><span>Dream Island</span></div>
+                    @foreach($infras as $infra)
+                    <div class="pagination-item"><span>{{$infra->title}}</span></div>
+                        @endforeach
                 </div>
             </div>
             <div class="swiper inf">
                 <div class="swiper-wrapper">
+                    @foreach($infras as $infra)
                     <div class="swiper-slide">
                         <div class="slide-content1">
-                            <img src="{{asset('assets/image/inf.jpg')}}" alt="">
+                            <img src="{{asset('storage/'.$infra->image)}}" alt="">
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="slide-content1">
-                            <img src="{{asset('assets/image/inf.jpg')}}" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slide-content1">
-                            <img src="{{asset('assets/image/inf.jpg')}}" alt="">
-                        </div>
-                    </div>
-
+                        @endforeach
                 </div>
-
             </div>
         </div>
         <!-- </div> -->
@@ -325,12 +292,12 @@ id="contactBtn-1"
             <div class="apartment-container w">
                 <div class="apart-left">
                     <div class="apart-left-head">
-                        <div class="apart-left-subtitle"><span>Apartments</span></div>
-                        <div class="apart-left-title"><span>MENZIL PLANLARI</span></div>
+                        <div class="apart-left-subtitle"><span>{{$menus[5]->name}}</span></div>
+                        <div class="apart-left-title"><span>{{$statics->where('id',14)->first()->title}}</span></div>
                     </div>
                     <div class="apart-left-context">
-                        <div class="apart-text"><span>Select and reserve an apartment to fix the price</span></div>
-                        <div class="apart-button"><button>All layout</button></div>
+                        <div class="apart-text"><span>{{$statics->where('id',12)->first()->title}}</span></div>
+                        <div class="apart-button"><a  href="{{route('cards')}}"><button>{{$statics->where('id',13)->first()->title}}</button></a></div>
                     </div>
                 </div>
                 <div class="apart-right">
@@ -342,7 +309,7 @@ id="contactBtn-1"
 
     <section class="rares w">
         <div class="rare-head">
-            <div class="rare-name"><span>Rare Formats</span></div>
+            <div class="rare-name"><span>{{$statics->where('id',15)->first()->title}}</span></div>
         </div>
         <div class="rare-slider-item-buttons">
             <div class="swiper-button-prev"></div>
@@ -351,13 +318,14 @@ id="contactBtn-1"
         <div class="rares-slider w">
             <div class="swiper">
                 <div class="swiper-wrapper">
+                    @foreach($rares as $rare)
                     <div class="swiper-slide">
                         <div class="rare-item">
-                            <div class="rare-item-img"><img src="{{asset('assets/image/rare.jpg')}}" alt=""></div>
+                            <div class="rare-item-img"><img src="{{asset('storage/'.$rare->image)}}" alt=""></div>
                             <div class="rare-item-content">
                                 <div class="rare-item-context">
-                                    <div class="rare-item-title"><span>Apartment with apart</span></div>
-                                    <div class="rare-item-text"><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, eaque?</span></div>
+                                    <div class="rare-item-title"><span>{{$rare->title}}</span></div>
+                                    <div class="rare-item-text"><span>{{$rare->description}}</span></div>
                                 </div>
                                 <div class="rare-item-button">
                                     <button class="rare-item-btn">Leave Request</button>
@@ -365,90 +333,7 @@ id="contactBtn-1"
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="rare-item">
-                            <div class="rare-item-img"><img src="{{asset('assets/image/rare.jpg')}}" alt=""></div>
-                            <div class="rare-item-content">
-                                <div class="rare-item-context">
-                                    <div class="rare-item-title"><span>Apartment with apart</span></div>
-                                    <div class="rare-item-text"><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, eaque?</span></div>
-                                </div>
-                                <div class="rare-item-button">
-                                    <button class="rare-item-btn">Leave Request</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="rare-item">
-                            <div class="rare-item-img"><img src="{{asset('assets/image/rare.jpg')}}" alt=""></div>
-                            <div class="rare-item-content">
-                                <div class="rare-item-context">
-                                    <div class="rare-item-title"><span>Apartment with apart</span></div>
-                                    <div class="rare-item-text"><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, eaque?</span></div>
-                                </div>
-                                <div class="rare-item-button">
-                                    <button class="rare-item-btn">Leave Request</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="rare-item">
-                            <div class="rare-item-img"><img src="{{asset('assets/image/rare.jpg')}}" alt=""></div>
-                            <div class="rare-item-content">
-                                <div class="rare-item-context">
-                                    <div class="rare-item-title"><span>Apartment with apart</span></div>
-                                    <div class="rare-item-text"><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, eaque?</span></div>
-                                </div>
-                                <div class="rare-item-button">
-                                    <button class="rare-item-btn">Leave Request</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="rare-item">
-                            <div class="rare-item-img"><img src="{{asset('assets/image/rare.jpg')}}" alt=""></div>
-                            <div class="rare-item-content">
-                                <div class="rare-item-context">
-                                    <div class="rare-item-title"><span>Apartment with apart</span></div>
-                                    <div class="rare-item-text"><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, eaque?</span></div>
-                                </div>
-                                <div class="rare-item-button">
-                                    <button class="rare-item-btn">Leave Request</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="rare-item">
-                            <div class="rare-item-img"><img src="{{asset('assets/image/rare.jpg')}}" alt=""></div>
-                            <div class="rare-item-content">
-                                <div class="rare-item-context">
-                                    <div class="rare-item-title"><span>Apartment with apart</span></div>
-                                    <div class="rare-item-text"><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, eaque?</span></div>
-                                </div>
-                                <div class="rare-item-button">
-                                    <button class="rare-item-btn">Leave Request</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="rare-item">
-                            <div class="rare-item-img"><img src="{{asset('assets/image/rare.jpg')}}" alt=""></div>
-                            <div class="rare-item-content">
-                                <div class="rare-item-context">
-                                    <div class="rare-item-title"><span>Apartment with apart</span></div>
-                                    <div class="rare-item-text"><span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla, eaque?</span></div>
-                                </div>
-                                <div class="rare-item-button">
-                                    <button class="rare-item-btn">Leave Request</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
                 </div>
             </div>
         </div>
@@ -458,27 +343,32 @@ id="contactBtn-1"
         <div class="container">
             <div class="finish-container">
                 <div class="finish-head">
-                    <div class="finish-subtitle"><span>Finishing</span></div>
-                    <div class="finish-title"><span>Full free expression or WOW-finishing?
-                It's up to you to decide.</span></div>
+                    <div class="finish-subtitle"><span>{{$menus[7]->name}}</span></div>
+                    <div class="finish-title"><span>{{$finish->title}}</span></div>
                 </div>
                 <div class="finish-content">
                     <div class="swiper slider-finish">
                         <div class="swiper-wrapper">
+                            <?php
+                            $finish1=$finishings->where('id',1)->first();
+                            $finish2=$finishings->where('id',2)->first();
+                            $finish3=$finishings->where('id',3)->first();
+
+                            ?>
                             <div class="swiper-slide">
                                 <div class="slide-content1">
                                     <div class="swiper inner-slider">
                                         <div class="swiper-wrapper inner" >
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/'.$finish1->image)}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light1.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/istirahet2.jpg')}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light2.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/istirahet3.jpg')}}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -489,20 +379,21 @@ id="contactBtn-1"
                                 </div>
 
                             </div>
+
                             <div class="swiper-slide">
                                 <div class="slide-content1">
                                     <div class="swiper inner-slider">
                                         <div class="swiper-wrapper inner" >
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/'.$finish2->image)}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light1.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/f22.jpg')}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light2.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/f23.jpg')}}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -512,20 +403,21 @@ id="contactBtn-1"
                                     </div>
                                 </div>
                             </div>
+
                             <div class="swiper-slide">
                                 <div class="slide-content1">
                                     <div class="swiper inner-slider">
                                         <div class="swiper-wrapper inner" >
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/'.$finish3->image)}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light1.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/m2.jpg')}}" alt="">
                                                 </div>
                                             </div>
                                             <div class="swiper-slide inner-slide">
-                                                <div class="inner-slide-img"><img src="{{asset('assets/image/light2.jpg')}}" alt="">
+                                                <div class="inner-slide-img"><img src="{{asset('storage/m3.jpg')}}" alt="">
                                                 </div>
                                             </div>
                                         </div>
@@ -536,10 +428,12 @@ id="contactBtn-1"
                                 </div>
                             </div>
                         </div>
+
+
                         <div class="custom-pagination">
-                            <div class="pagination-item">light</div>
-                            <div class="pagination-item">Stone</div>
-                            <div class="pagination-item">sand</div>
+                            @foreach($finishings as $finishing)
+                            <div class="pagination-item">{{$finishing->title}}</div>
+                                @endforeach
                         </div>
                     </div>
                 </div>
@@ -550,11 +444,144 @@ id="contactBtn-1"
 
     <section class="master-plan w">
         <div class="container">
+            <span class="master-plan-head">{{$statics->where('id',18)->first()->title}}</span>
             <div class="master-plan-img w">
-                <img src="{{asset('assets/image/house-2-transformed.png')}}" alt="">
-                <div class="plan-btn"><span class="masterplan-btn">+</span>
+                <img src="{{asset('storage/structure.jpg')}}" alt="masterplan">
+                <div class="plan-btn1"><span class=" masterplan-btn">+</span>
                     <div class="plan-section-1">
                         <div class="plan-section-title"><span>1 section</span></div>
+                        <div class="plan-section-content">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Studio</th>
+                                    <th>from 12 000 000 azn</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1 otaqli</td>
+                                    <td>from 13 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>2 otaqli</td>
+                                    <td>from 16 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>3 otaqli</td>
+                                    <td>from 19 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>4 otaqli</td>
+                                    <td>from 23 000 000 azn</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan-btn2"><span class="masterplan-btn">+</span>
+                    <div class="plan-section-2">
+                        <div class="plan-section-title"><span>2 section</span></div>
+                        <div class="plan-section-content">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Studio</th>
+                                    <th>from 12 000 000 azn</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1 otaqli</td>
+                                    <td>from 13 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>2 otaqli</td>
+                                    <td>from 16 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>3 otaqli</td>
+                                    <td>from 19 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>4 otaqli</td>
+                                    <td>from 23 000 000 azn</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan-btn3"><span class="masterplan-btn">+</span>
+                    <div class="plan-section-3">
+                        <div class="plan-section-title"><span>3 section</span></div>
+                        <div class="plan-section-content">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Studio</th>
+                                    <th>from 12 000 000 azn</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1 otaqli</td>
+                                    <td>from 13 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>2 otaqli</td>
+                                    <td>from 16 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>3 otaqli</td>
+                                    <td>from 19 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>4 otaqli</td>
+                                    <td>from 23 000 000 azn</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan-btn4"><span class="masterplan-btn">+</span>
+                    <div class="plan-section-4">
+                        <div class="plan-section-title"><span>4 section</span></div>
+                        <div class="plan-section-content">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Studio</th>
+                                    <th>from 12 000 000 azn</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1 otaqli</td>
+                                    <td>from 13 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>2 otaqli</td>
+                                    <td>from 16 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>3 otaqli</td>
+                                    <td>from 19 000 000 azn</td>
+                                </tr>
+                                <tr>
+                                    <td>4 otaqli</td>
+                                    <td>from 23 000 000 azn</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan-btn5"><span class="masterplan-btn">+</span>
+                    <div class="plan-section-5">
+                        <div class="plan-section-title"><span>5 section</span></div>
                         <div class="plan-section-content">
                             <table>
                                 <thead>
@@ -592,7 +619,7 @@ id="contactBtn-1"
 
     <section class="word w">
         <div class="container">
-            <div id="moving-text">BULVAR PARK LAYIHESI</div>
+            <div id="moving-text">{{$company->title}}</div>
         </div>
     </section>
 
@@ -600,19 +627,19 @@ id="contactBtn-1"
         <div class="container">
             <div class="develop">
                 <div class="develop-head">
-                    <div class="develop-head-subtitle"><span>About the developer</span></div>
-                    <div class="develop-head-title"><span>Strana Development is a federal developer from Tyumen, who have been building houses and shopping centers since 2008. More than 20,000 families live in our neighborhoods.</span></div>
+                    <div class="develop-head-subtitle"><span>{{$menus[8]->name}}</span></div>
+                    <div class="develop-head-title"><span> {{$developer->title}}</span></div>
                 </div>
                 <div class="develop-container w">
                     <div class="develop-image">
-                        <img src="{{asset('assets/image/develop.png')}}" alt="">
+                        <img src="{{asset('storage/'.$developer->image)}}" alt="">
                     </div>
                     <div class="develop-content">
-                        <div class="develop-context"><span>We do not compromise on the quality. Each object is built to the highest standards, no matter whether it is in Moscow or in Tyumen</span></div>
+                        <div class="develop-context"><span>{{$developer->description}}</span></div>
                         <div class="develop-links">
                             <ul class="develop-link">
-                                <li><a href=""><i class="fa-solid fa-book"></i>Construction progress</a></li>
-                                <li><a href=""><i class="fa-solid fa-book"></i>Construction progress</a></li>
+{{--                                <li><a href=""><i class="fa-solid fa-book"></i>Construction progress</a></li>--}}
+                                <li><a href=""><i class="fa-solid fa-folder-open"></i>{{$statics->where('id',4)->first()->title}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -621,83 +648,118 @@ id="contactBtn-1"
         </div>
     </section>
 
-    <section class="team w">
-        <div class="container">
-            <div class="team-container">
-                <div class="team-head"><span>Project team</span></div>
-                <div class="team-items">
-                    <div class="team-item"><img src="{{asset('assets/image/team.svg')}}" alt=""></div>
-                    <div class="team-item"><img src="{{asset('assets/image/team.svg')}}" alt=""></div>
-                    <div class="team-item"><img src="{{asset('assets/image/team.svg')}}" alt=""></div>
-                    <div class="team-item"><img src="{{asset('assets/image/team.svg')}}" alt=""></div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="team w">--}}
+{{--        <div class="container">--}}
+{{--            <div class="team-container">--}}
+{{--                <div class="team-head"><span>Project team</span></div>--}}
+{{--                <div class="team-items">--}}
+{{--                    <div class="team-item"><img src="{{asset('assets/image/team.svg')}}" alt=""></div>--}}
+{{--                    <div class="team-item"><img src="{{asset('assets/image/team.svg')}}" alt=""></div>--}}
+{{--                    <div class="team-item"><img src="{{asset('assets/image/team.svg')}}" alt=""></div>--}}
+{{--                    <div class="team-item"><img src="{{asset('assets/image/team.svg')}}" alt=""></div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
-    <section class="payment w">
-        <div class="container">
-            <div class="payment-container">
-                <div class="payment-head">
-                    <div class="payment-subtitle"><span>PAYMENT</span></div>
-                    <div class="payment-title"><span>KREDIT KALKULYATORU</span></div>
-                </div>
-                <div class="payment-content">
-                    <div class="payment-left">
-                        <div class="payment-left-item">
-                            <div class="payment-left-title"><span>100% payment</span></div>
-                            <div class="payment-context w">
-                                <div class="payment-item"><span>WITHOUT BANKS</span></div>
-                                <div class="payment-item"><span>More information</span></div>
-                            </div>
-                        </div>
-                        <div class="payment-left-item">
-                            <div class="payment-left-title"><span>Mortgage from 5.1%</span></div>
-                            <div class="payment-context">
-                                <div class="payment-item"><span>TERM up to 30 years</span></div>
-                                <div class="payment-item"><span>More information</span></div>
-                            </div>
-                        </div>
-                        <div class="payment-left-item">
-                            <div class="payment-left-title"><span>Trade-In</span></div>
-                            <div class="payment-context">
-                                <div class="payment-item"><span>EXCHANGE PROGRAMM</span></div>
-                                <div class="payment-item"><span>Details in the sales department</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="payment-right">
-                        <div class="payment-form-title"><span>We'll answer all your questions and help you find the best purchase option</span></div>
-                        <form action="" class="payment-form">
-                            <select class="payment-form-select">
-                                <option value="">Way of purchase</option>
-                                <option value="">100% payment</option>
-                                <option value="">Mortgage from 5.1%</option>
-                                <option value="">Trade-In</option>
-                            </select>
-                            <div class="payment-phone-select">
-                                <input id="phone-input-2" class="phone-payment" type="tel" name="phone1" />
-                            </div>
-                            <button class="payment-btn">Send</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="payment w">--}}
+{{--        <div class="container">--}}
+{{--            <div class="payment-container">--}}
+{{--                <div class="payment-head">--}}
+{{--                    <div class="payment-subtitle"><span>PAYMENT</span></div>--}}
+{{--                    <div class="payment-title"><span>KREDIT KALKULYATORU</span></div>--}}
+{{--                </div>--}}
+{{--                <div class="payment-content">--}}
+{{--                    <div class="payment-left">--}}
+{{--                        <div class="payment-left-head"><span>Daxili Kredit Kalkulyatoru</span></div>--}}
+{{--                        <div class="payment-left-body">--}}
+{{--                            <div class="payment-left-dropdown">--}}
+{{--                                <div class="dropdown">--}}
+{{--                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                        Dropdown button1--}}
+{{--                                    </button>--}}
+{{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--                                        <a class="dropdown-item" href="#">Action</a>--}}
+{{--                                        <a class="dropdown-item" href="#">Another action</a>--}}
+{{--                                        <a class="dropdown-item" href="#">Something else here</a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="payment-left-dropdown">--}}
+{{--                                <div class="dropdown">--}}
+{{--                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                        Dropdown button1--}}
+{{--                                    </button>--}}
+{{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--                                        <a class="dropdown-item" href="#">Action</a>--}}
+{{--                                        <a class="dropdown-item" href="#">Another action</a>--}}
+{{--                                        <a class="dropdown-item" href="#">Something else here</a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="payment-left-dropdown">--}}
+{{--                                <div class="dropdown">--}}
+{{--                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                        Dropdown button1--}}
+{{--                                    </button>--}}
+{{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--                                        <a class="dropdown-item" href="#">Action</a>--}}
+{{--                                        <a class="dropdown-item" href="#">Another action</a>--}}
+{{--                                        <a class="dropdown-item" href="#">Something else here</a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="payment-left-dropdown">--}}
+{{--                                <div class="payment-left-dropdown-small">--}}
+{{--                                    <div class="dropdown">--}}
+{{--                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                            Dropdown button1--}}
+{{--                                        </button>--}}
+{{--                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--                                            <a class="dropdown-item" href="#">Action</a>--}}
+{{--                                            <a class="dropdown-item" href="#">Another action</a>--}}
+{{--                                            <a class="dropdown-item" href="#">Something else here</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="payment-left-dropdown">--}}
+{{--                                <div class="payment-left-dropdown-small">--}}
+{{--                                    <div class="dropdown">--}}
+{{--                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                            Dropdown button1--}}
+{{--                                        </button>--}}
+{{--                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--                                            <a class="dropdown-item" href="#">Action</a>--}}
+{{--                                            <a class="dropdown-item" href="#">Another action</a>--}}
+{{--                                            <a class="dropdown-item" href="#">Something else here</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="payment-left-dropdown">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="payment-right" style="width: 300px">--}}
+
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <section class="galary w" id="galary">
         <div class="container">
             <div class="galary-slider">
                 <div class="galary-head">
-                    <span>Gallery</span>
+                    <span>{{$menus[9]->name}}</span>
                 </div>
                 <div class="swiper slider-galary">
                     <div class="swiper-wrapper">
                         @foreach($galleries as $gallery)
                         <div class="swiper-slide">
                             <img src="{{asset('storage/'.$gallery->image)}}" alt="">
-
                         </div>
                             @endforeach
                     </div>

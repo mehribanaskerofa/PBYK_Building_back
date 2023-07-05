@@ -21,7 +21,6 @@ class StaticService
         $data=request()->all();
 
         $data['active']=$data['active'] ?? false;
-dd($data);
         $model= $this->repository->save($data,new StaticModel());
 
         self::ClearCached();

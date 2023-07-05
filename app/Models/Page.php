@@ -13,6 +13,6 @@ class Page extends Model implements TranslatableContract
     protected $table='pages';
     protected $guarded=[];
     public $translationModel=PageTranslation::class;
-    public $translatedAttributes = ['title','slug','description'];
+    public $translatedAttributes = ['title','slug','description','button'];
 
 }

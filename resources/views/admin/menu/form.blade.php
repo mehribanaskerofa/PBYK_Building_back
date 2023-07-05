@@ -51,6 +51,15 @@
                 </div>
 
                 <div class="row">
+                    <div class="form-group col-6">
+                        <label>Url</label>
+                        <input type="text" placeholder="url" name="url"
+                               value="{{old("url",isset($model) ? ($model->url ?? '') : '')}}"
+                               class="form-control">
+                        @error("url")
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
+                    </div>
                         <div class="form-group col-3">
                             <label>Active</label>
                             <input type="checkbox" class="mt-4" name="active" value="1" @checked(old('active',$model->active ?? ''))>

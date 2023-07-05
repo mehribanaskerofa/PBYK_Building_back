@@ -9,7 +9,7 @@
             <table class="table table-bordered" style="text-align: center">
                 <thead>
                 <tr>
-                    <th style="width: 10px">#</th>
+                    <th style="width: 10px">ID</th>
                     <th>Title</th>
                     <th>Status</th>
                     <th style="width: 50px">Edit</th>

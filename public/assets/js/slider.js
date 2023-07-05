@@ -1,4 +1,4 @@
-const swiper = new Swiper('.benefits-slider .swiper', {
+const swipera = new Swiper('.benefits-slider .swiper', {
 
     pagination: {
       el: '.benefits-slider .swiper-pagination',

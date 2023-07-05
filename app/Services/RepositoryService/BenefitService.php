@@ -15,7 +15,7 @@ class BenefitService
     }
     public function dataAllWithPaginate()
     {
-        return $this->repository->paginate(10,['translations']);
+        return $this->repository->paginate(4,['translations']);
     }
 
     public function store($request)

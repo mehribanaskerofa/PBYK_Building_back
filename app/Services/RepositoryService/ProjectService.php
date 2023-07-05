@@ -60,7 +60,7 @@ class ProjectService
     {
         return Cache::rememberForever('projects',
             function (){
-                return $this->repository->all(with:['translations']);
+                return $this->repository->all(with:['translations','blocks']);
             });
     }
 

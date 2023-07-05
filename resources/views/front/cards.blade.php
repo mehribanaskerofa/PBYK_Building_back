@@ -7,6 +7,7 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
 
+
 @endpush
 @section('content')
     <div class="filter-for-cards container">
@@ -21,7 +22,8 @@
                         <button onclick="filterCardsByRoomCount(1)">1 </button>
                         <button onclick="filterCardsByRoomCount(2)">2 </button>
                         <button onclick="filterCardsByRoomCount(3)">3 </button>
-                        <button onclick="filterCardsByRoomCount(3)">4 </button>
+                        <button onclick="filterCardsByRoomCount(4)">4 </button>
+                        <button onclick="filterCardsByRoomCount(6)">6 </button>
                     </div>
                 </div>
 
@@ -34,9 +36,10 @@
                             <p>rooms</p>
                             <div class="common-price">
                                 <span id="min-price-label">$0</span>
+                                <div>
                                 <input type="range" id="min-price" min="0" max="1000" step="10" value="0">
-
                                 <input type="range" id="max-price" min="0" max="1000" step="10" value="1000">
+                                </div>
                                 <span id="max-price-label">$1000</span>
                             </div>
                         </div>
@@ -45,8 +48,10 @@
                             <p>area</p>
                             <div class="common-area">
                                 <span id="min-area-label">0</span>
+                                <div>
                                 <input type="range" id="min-area" min="0" max="100" step="1" value="0">
                                 <input type="range" id="max-area" min="0" max="100" step="1" value="100">
+                                </div>
                                 <span id="max-area-label">100</span>
                             </div>
                         </div>
@@ -67,258 +72,53 @@
         <hr>
 
         <div class="main-cards">
-{{--            <div class="card" data-rooms="2" data-price="100" data-area="50">--}}
 
-{{--                <a href="#"></a>--}}
-{{--                <div class="slider-section">--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <div class="swiper">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            <div class="swiper-slide"> ab</div>--}}
-{{--                            <div class="swiper-slide">kgs</div>--}}
-{{--                            <div class="swiper-slide">adshjvfs</div>--}}
-{{--                        </div>--}}
-{{--                        <div class="swiper-scrollbar"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-main-price">--}}
-{{--                    <div class="main-price-left">--}}
-{{--                        <h3>2-ком. 50 м²</h3>--}}
-{{--                        <div class="current-price">--}}
-{{--                            100 ₽--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="main-price-right">--}}
-{{--                        <div class="main-price-old">41 773 900 ₽</div>--}}
-{{--                        <div class="pink-tag">--}}
-{{--                            <span> -4 177 390 ₽--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <hr>--}}
-{{--                <ul class="card-main-specs">--}}
-{{--                    <li class="specs-up">--}}
-{{--                        <p>Жилой комплекс</p>--}}
-{{--                        <p> ЖК WOW--}}
-{{--                        </p>--}}
-{{--                    </li>--}}
-{{--                    <li class="specs-down">--}}
-{{--                        <p>Дом</p>--}}
-{{--                        <p>WOW</p>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--                <div class="card-main-tags">--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-            <div class="card" data-rooms="3" data-price="200" data-area="70">
-
-                <a href="#"></a>
+            @foreach($houses as $house)
+            <div class="card" data-rooms="{{$house->room}}" data-price="{{$house->price}}" data-area="{{$house->area}}">
+                <a href="{{route('apart',$house)}}" style="text-decoration: none">
                 <div class="slider-section">
                     <!-- Swiper -->
                     <!-- Swiper -->
                     <div class="swiper cardSwiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg1.PNG')}}" alt=""></div>
-                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg2.PNG')}}" alt=""></div>
-                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg3.PNG')}}" alt=""></div>
-                        </div>
+                            <div class="swiper-slide"> <img src="{{asset('storage/'.$house->layout)}}" alt=""></div>
+                            <div class="swiper-slide"> <img src="{{asset('storage/'.$house->block->layout)}}" alt=""></div>
+                            <div class="swiper-slide"> <img src="{{asset('storage/'.$house->block->image)}}" alt=""></div>
 
+                        </div>
                         <div class="swiper-scrollbar"></div>
                     </div>
                 </div>
                 <div class="card-main-price">
                     <div class="main-price-left">
-                        <h3>3-ком. 70 м²</h3>
+                        <h3>{{$house->room}} - room , area - {{$house->area}}</h3>
                         <div class="current-price">
-                            200 ₽
+                            {{$house->price}}
                         </div>
                     </div>
                     <div class="main-price-right">
-                        <div class="main-price-old">41 773 900 ₽</div>
+                        <div class="main-price-old">{{$house->block->block}} - block</div>
                         <div class="pink-tag">
-                            <span> -4 177 390 ₽
-                            </span>
+                            <span> {{$house->block->project->title}} </span>
                         </div>
                     </div>
                 </div>
                 <hr>
                 <ul class="card-main-specs">
                     <li class="specs-up">
-                        <p>Жилой комплекс</p>
-                        <p> ЖК WOW
+                        <p>Project</p>
+                        <p> {{$company->title}}
                         </p>
                     </li>
                     <li class="specs-down">
-                        <p>Дом</p>
-                        <p>WOW</p>
+                        <p>Bina</p>
+                        <p>{{$house->block->project->title}}</p>
                     </li>
                 </ul>
-{{--                <div class="card-main-tags">--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-            </div>
-{{--            <div class="card" data-rooms="2" data-price="300" data-area="50">--}}
-{{--                <div class="heart-button">--}}
-{{--                    <i class="fa-regular fa-heart"></i>--}}
-{{--                </div>--}}
-{{--                <a href="#"></a>--}}
-{{--                <div class="slider-section">--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <div class="swiper cardSwiper">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            <div class="swiper-slide"> <img src="{{asset('assets/image/cardimg1.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg2.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg3.PNG')}}" alt=""></div>--}}
+                </a>
+                </div>
+                @endforeach
 
-{{--                        </div>--}}
-{{--                        <div class="swiper-scrollbar"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-main-price">--}}
-{{--                    <div class="main-price-left">--}}
-{{--                        <h3>3-ком. 50.38 м²</h3>--}}
-{{--                        <div class="current-price">--}}
-{{--                            37 596 510 ₽--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="main-price-right">--}}
-{{--                        <div class="main-price-old">41 773 900 ₽</div>--}}
-{{--                        <div class="pink-tag">--}}
-{{--                            <span> -4 177 390 ₽--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <hr>--}}
-{{--                <ul class="card-main-specs">--}}
-{{--                    <li class="specs-up">--}}
-{{--                        <p>Жилой комплекс</p>--}}
-{{--                        <p> ЖК WOW--}}
-{{--                        </p>--}}
-{{--                    </li>--}}
-{{--                    <li class="specs-down">--}}
-{{--                        <p>Дом</p>--}}
-{{--                        <p>WOW</p>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--                <div class="card-main-tags">--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <div class="card" data-rooms="1" data-price="550" data-area="60">--}}
-{{--                <div class="heart-button">--}}
-{{--                    <i class="fa-regular fa-heart"></i>--}}
-{{--                </div>--}}
-{{--                <a href="#"></a>--}}
-{{--                <div class="slider-section">--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <div class="swiper cardSwiper">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            <div class="swiper-slide"> <img src="{{asset('assets/image/cardimg1.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg2.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg3.PNG')}}" alt=""></div>--}}
-
-{{--                        </div>--}}
-{{--                        <div class="swiper-scrollbar"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-main-price">--}}
-{{--                    <div class="main-price-left">--}}
-{{--                        <h3>1 otaq 60м²</h3>--}}
-{{--                        <div class="current-price">--}}
-{{--                            550 ₽--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="main-price-right">--}}
-{{--                        <div class="main-price-old">41 773 900 ₽</div>--}}
-{{--                        <div class="pink-tag">--}}
-{{--                            <span> -4 177 390 ₽--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <hr>--}}
-{{--                <ul class="card-main-specs">--}}
-{{--                    <li class="specs-up">--}}
-{{--                        <p>Жилой комплекс</p>--}}
-{{--                        <p> ЖК WOW--}}
-{{--                        </p>--}}
-{{--                    </li>--}}
-{{--                    <li class="specs-down">--}}
-{{--                        <p>Дом</p>--}}
-{{--                        <p>WOW</p>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--                <div class="card-main-tags">--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
 
 {{--            <div class="card form" data-rooms="1" data-price="50" data-area="66">--}}
 {{--                <div class="feedback-form">--}}
@@ -341,262 +141,8 @@
 {{--                </div>--}}
 
 {{--            </div>--}}
-{{--            <div class="card" data-rooms="3" data-price="1000" data-area="66">--}}
-{{--                <div class="heart-button">--}}
-{{--                    <i class="fa-regular fa-heart"></i>--}}
-{{--                </div>--}}
-{{--                <a href="#"></a>--}}
-{{--                <div class="slider-section">--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <div class="swiper cardSwiper">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            <div class="swiper-slide"> <img src="{{asset('assets/image/cardimg1.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg2.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg3.PNG')}}" alt=""></div>--}}
 
-{{--                        </div>--}}
-{{--                        <div class="swiper-scrollbar"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-main-price">--}}
-{{--                    <div class="main-price-left">--}}
-{{--                        <h3>3-ком. 66.38 м²</h3>--}}
-{{--                        <div class="current-price">--}}
-{{--                            37 596 510 ₽--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="main-price-right">--}}
-{{--                        <div class="main-price-old">41 773 900 ₽</div>--}}
-{{--                        <div class="pink-tag">--}}
-{{--                            <span> -4 177 390 ₽--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <hr>--}}
-{{--                <ul class="card-main-specs">--}}
-{{--                    <li class="specs-up">--}}
-{{--                        <p>Жилой комплекс</p>--}}
-{{--                        <p> ЖК WOW--}}
-{{--                        </p>--}}
-{{--                    </li>--}}
-{{--                    <li class="specs-down">--}}
-{{--                        <p>Дом</p>--}}
-{{--                        <p>WOW</p>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--                <div class="card-main-tags">--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="card" data-rooms="2" data-price="50" data-area="30">--}}
-{{--                <div class="heart-button">--}}
-{{--                    <i class="fa-regular fa-heart"></i>--}}
-{{--                </div>--}}
-{{--                <a href="#"></a>--}}
-{{--                <div class="slider-section">--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <div class="swiper cardSwiper">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            <div class="swiper-slide"> <img src="{{asset('assets/image/cardimg1.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg2.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg3.PNG')}}" alt=""></div>--}}
 
-{{--                        </div>--}}
-{{--                        <div class="swiper-scrollbar"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-main-price">--}}
-{{--                    <div class="main-price-left">--}}
-{{--                        <h3>3-ком. 30.38 м²</h3>--}}
-{{--                        <div class="current-price">--}}
-{{--                            37 596 510 ₽--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="main-price-right">--}}
-{{--                        <div class="main-price-old">41 773 900 ₽</div>--}}
-{{--                        <div class="pink-tag">--}}
-{{--                            <span> -4 177 390 ₽--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <hr>--}}
-{{--                <ul class="card-main-specs">--}}
-{{--                    <li class="specs-up">--}}
-{{--                        <p>Жилой комплекс</p>--}}
-{{--                        <p> ЖК WOW--}}
-{{--                        </p>--}}
-{{--                    </li>--}}
-{{--                    <li class="specs-down">--}}
-{{--                        <p>Дом</p>--}}
-{{--                        <p>WOW</p>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--                <div class="card-main-tags">--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="card" data-rooms="1" data-price="500" data-area="50">--}}
-{{--                <div class="heart-button">--}}
-{{--                    <i class="fa-regular fa-heart"></i>--}}
-{{--                </div>--}}
-{{--                <a href="#"></a>--}}
-{{--                <div class="slider-section">--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <div class="swiper cardSwiper">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            <div class="swiper-slide"> <img src="{{asset('assets/image/cardimg1.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg2.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg3.PNG')}}" alt=""></div>--}}
-
-{{--                        </div>--}}
-{{--                        <div class="swiper-scrollbar"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-main-price">--}}
-{{--                    <div class="main-price-left">--}}
-{{--                        <h3>3-ком. 70.38 м²</h3>--}}
-{{--                        <div class="current-price">--}}
-{{--                            37 596 510 ₽--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="main-price-right">--}}
-{{--                        <div class="main-price-old">41 773 900 ₽</div>--}}
-{{--                        <div class="pink-tag">--}}
-{{--                            <span> -4 177 390 ₽--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <hr>--}}
-{{--                <ul class="card-main-specs">--}}
-{{--                    <li class="specs-up">--}}
-{{--                        <p>Жилой комплекс</p>--}}
-{{--                        <p> ЖК WOW--}}
-{{--                        </p>--}}
-{{--                    </li>--}}
-{{--                    <li class="specs-down">--}}
-{{--                        <p>Дом</p>--}}
-{{--                        <p>WOW</p>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--                <div class="card-main-tags">--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="card" data-rooms="2" data-price="50" data-area="60">--}}
-{{--                <div class="heart-button">--}}
-{{--                    <i class="fa-regular fa-heart"></i>--}}
-{{--                </div>--}}
-{{--                <a href="#"></a>--}}
-{{--                <div class="slider-section">--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <!-- Swiper -->--}}
-{{--                    <div class="swiper cardSwiper">--}}
-{{--                        <div class="swiper-wrapper">--}}
-{{--                            <div class="swiper-slide"> <img src="{{asset('assets/image/cardimg1.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg2.PNG')}}" alt=""></div>--}}
-{{--                            <div class="swiper-slide"><img src="{{asset('assets/image/cardimg3.PNG')}}" alt=""></div>--}}
-
-{{--                        </div>--}}
-{{--                        <div class="swiper-scrollbar"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="card-main-price">--}}
-{{--                    <div class="main-price-left">--}}
-{{--                        <h3>3-ком. 70.38 м²</h3>--}}
-{{--                        <div class="current-price">--}}
-{{--                            37 596 510 ₽--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="main-price-right">--}}
-{{--                        <div class="main-price-old">41 773 900 ₽</div>--}}
-{{--                        <div class="pink-tag">--}}
-{{--                            <span> -4 177 390 ₽--}}
-{{--                            </span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <hr>--}}
-{{--                <ul class="card-main-specs">--}}
-{{--                    <li class="specs-up">--}}
-{{--                        <p>Жилой комплекс</p>--}}
-{{--                        <p> ЖК WOW--}}
-{{--                        </p>--}}
-{{--                    </li>--}}
-{{--                    <li class="specs-down">--}}
-{{--                        <p>Дом</p>--}}
-{{--                        <p>WOW</p>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--                <div class="card-main-tags">--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-tags">--}}
-{{--                        <span> Панорамные окна--}}
-{{--                        </span>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
         </div>
     </div>
 

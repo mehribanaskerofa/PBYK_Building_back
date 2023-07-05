@@ -10,7 +10,7 @@ class MenuRequest extends FormRequest
     public function rules(): array
     {
         $data= [
-            'url'=>'required|string|url',
+            'url'=>'string',
             'active'=>'nullable|boolean'
         ];
         return $this->mapLanguageValidations($data);

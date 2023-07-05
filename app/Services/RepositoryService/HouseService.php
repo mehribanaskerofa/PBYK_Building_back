@@ -68,7 +68,7 @@ class HouseService
     {
         return Cache::rememberForever('houses',
             function (){
-                return $this->repository->all(with:['translations']);
+                return $this->repository->all(with:['translations','block','project']);
             });
     }
 

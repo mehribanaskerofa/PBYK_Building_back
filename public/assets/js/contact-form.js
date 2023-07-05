@@ -4,7 +4,7 @@ var input2 = document.querySelector("#phone-input-2");
 
 var iti=window.intlTelInput(input1, {
   separateDialCode: true,
-    onlyCountries: ["az",'tr'],
+    onlyCountries: ["az",'tr','ru'],
 });
 
 window.intlTelInput(input2, {

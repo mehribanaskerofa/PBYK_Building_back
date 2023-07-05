@@ -23,3 +23,11 @@ Route::get('/a', function () {
 
 Route::post('contact-send',[ContactFrontController::class,'store'])->name('contact-send');
 Route::get('cards',[CardController::class,'index'])->name('cards');
+Route::get('apart/{house}',[CardController::class,'apart'])->name('apart');
+
+
+Route::get('/calc/{lang}', function ($lang) {
+    \Illuminate\Support\Facades\Session::put('lang',$lang);
+//    app()->setLocale($lang);
+    return redirect()->back();
+})->name('calc');

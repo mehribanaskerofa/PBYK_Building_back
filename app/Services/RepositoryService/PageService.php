@@ -15,7 +15,7 @@ class PageService
     }
     public function dataAllWithPaginate()
     {
-        return $this->repository->paginate(10,['translations']);
+        return $this->repository->paginate(5,['translations']);
     }
 
     public function store($request)

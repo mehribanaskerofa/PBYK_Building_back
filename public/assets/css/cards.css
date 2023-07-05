@@ -27,6 +27,9 @@ body {
     border: 1px solid #ccc;
     margin-bottom: 20px;
 }
+.card a{
+    color: var(--text-color-third);
+}
 
 .filter-for-cards .filter-range {
     display: flex;
@@ -58,7 +61,7 @@ body {
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .filter-for-cards .main-cards .card {
@@ -172,6 +175,34 @@ body {
 .filter-for-cards .main-cards .card .heart-button i {
     font-size: 20px;
 }
+/*.filter-for-cards .swiper {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    flex-wrap: wrap;*/
+
+/*}*/
+/*.filter-for-cards .swiper-wrapper{*/
+/*    display: flex !important;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+/*.filter-for-cards .swiper-slide {*/
+/*    flex-wrap: wrap;*/
+
+/*    text-align: center;*/
+/*    font-size: 18px;*/
+/*    background: #fff;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.filter-for-cards .swiper-slide img {*/
+/*    display: block;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    object-fit: cover;*/
+/*}*/
 
 /* silider */
 
@@ -183,6 +214,7 @@ body {
     position: relative;
     width: 100%;
     height: 250px;
+    flex-wrap: nowrap !important;
 }
 .filter-for-cards .swiper-slide {
     width: 100%;
@@ -275,7 +307,9 @@ body {
     display: flex;
     align-items: center;
 }
-
+.filter-for-cards .buttons{
+    padding-bottom: 20px;
+}
 .filter-for-cards .buttons .buttons-inside {
     padding: 10px 20px 10px 20px;
     border: 1px solid rgb(214, 209, 209);
@@ -326,13 +360,14 @@ body {
 
 .filter-for-cards .card-filters-up .wrapper p {
     color: gray;
+    margin-bottom: 0;
 }
 
 .filter-for-cards .common-price {
-    width: 350px;
+    width: 100%;
     display: flex;
     align-items: center;
-    border: 1px solid rgb(192, 191, 191);
+    /*border: 1px solid rgb(192, 191, 191);*/
 }
 
 .filter-for-cards .price-range .common-price input {
@@ -340,10 +375,10 @@ body {
 }
 
 .filter-for-cards .common-area {
-    width: 350px;
+    width: 100%;
     display: flex;
     align-items: center;
-    border: 1px solid rgb(192, 191, 191);
+    /*border: 1px solid rgb(192, 191, 191);*/
 }
 
 .filter-for-cards .common-area input {
@@ -586,15 +621,29 @@ input[type="number"]::-webkit-inner-spin-button {
         height: max-content;
     }
 }
+@media(max-width:600px) {
+.p-range input{
+    width: 100px;
+}
+}
+@media(max-width:450px) {
+    .p-range input{
+        width: 70px;
+    }
+
+}
 
 @media(max-width:390px) {
     .filter-for-cards .main-price-left .current-price {
-        font-size: 25px;
+        font-size: 17px;
         font-weight: bolder;
     }
 
     .filter-for-cards .main-price-left h3 {
-        font-size: 20px;
+        font-size: 14px;
         font-weight: 400;
+    }
+    .filter-for-cards .main-price-old{
+        font-size: 12px;
     }
 }

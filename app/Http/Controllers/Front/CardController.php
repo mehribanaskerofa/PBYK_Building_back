@@ -7,6 +7,7 @@ use App\Http\Requests\ContactFrontRequest;
 use App\Http\Requests\ContactRequest;
 use App\Http\Requests\PageRequest;
 use App\Models\Contact;
+use App\Models\House;
 use App\Services\RepositoryService\ContactService;
 
 class CardController extends Controller
@@ -20,5 +21,9 @@ class CardController extends Controller
     {
         return view('front.cards');
     }
-
+    public function apart(House $house)
+    {
+//        dd($house);
+        return view('front.apart',compact('house'));
+    }
 }
