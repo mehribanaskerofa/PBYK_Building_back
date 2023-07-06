@@ -18,7 +18,7 @@ class AdminController extends Controller
     public function login()
     {
         //active olanlar gelir
-        if(auth()->guard(Guards::ADMIN->value)->attempt(['email'=>request()->email,'password'=>request()->password,'active'=>true],request()->remember_me)){
+        if(auth()->guard(Guards::ADMIN->value)->attempt(['email'=>request()->email,'password'=>request()->password],request()->remember_me)){
             return redirect()->route('admin.home');
         }
         return redirect()->back();

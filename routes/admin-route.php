@@ -36,7 +36,7 @@ function productRoutes():void{
 
 
 //,'middleware'=>'admin'
-Route::group(['prefix'=>'admin','as'=>'admin.'],function () {
+Route::group(['prefix'=>'admin','as'=>'admin.','middleware'=>'admin'],function () {
     Route::get('/',[AdminController::class,'index'])->name('home');
     Route::get('/logout',[AdminController::class,'logout'])->name('logout');
 
