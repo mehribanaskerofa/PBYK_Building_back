@@ -7,9 +7,9 @@
             </a>
 
             <div class="media-body">
-                <div class="font-weight-semibold">Victoria Baker</div>
+                <div class="font-weight-semibold">M.A</div>
                 <div class="font-size-sm line-height-sm opacity-50">
-                    Senior developer
+                    Admin
                 </div>
             </div>
 

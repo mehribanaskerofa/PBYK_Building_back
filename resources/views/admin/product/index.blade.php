@@ -8,7 +8,7 @@
     <br>
     <div class="card">
         <div class="card-body">
-            <table class="table table-bordered">
+            <table class="table table-bordered" style="text-align: center">
                 <thead>
                 <tr>
                     <th style="width: 10px">#</th>

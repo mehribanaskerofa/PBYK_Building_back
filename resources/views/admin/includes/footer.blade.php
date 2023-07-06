@@ -8,7 +8,7 @@
 
     <div class="navbar-collapse collapse" id="navbar-footer">
 						<span class="navbar-text">
-							&copy; 2015 - 2018. <a href="#">Limitless Web App Kit</a> by <a href="https://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+							&copy; 2023. <a href="#">Limitless Web App Kit</a> by M.A</a>
 						</span>
 
         <ul class="navbar-nav ml-lg-auto">
