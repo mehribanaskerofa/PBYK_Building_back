@@ -33,7 +33,7 @@
     <div class="menu-bar w" id="menu-bar">
         <div class="menu-bar-top">
             <div class="menu-bar-image">
-                <img src="{{asset('assets/image/menu-bar-image.png')}}" alt="">
+                <img src="{{asset('storage/menu_image.png')}}" alt="">
             </div>
             <div class="menu-bar-content">
                 <div class="menu-bar-title">

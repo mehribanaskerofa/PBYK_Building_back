@@ -39,7 +39,7 @@ paginationItems.forEach(function(item, index) {
 
 
 const swiper2 = new Swiper('.rares .swiper', {
-slidesPerView: 3,
+slidesPerView: 5,
   pagination: {
       el: '.rares .swiper-pagination',
   },

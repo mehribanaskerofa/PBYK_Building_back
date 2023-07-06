@@ -343,7 +343,7 @@ z-index: 1;
   }
   .header-bottom-img{
       padding-top: 150px;
-      transform: scale(2);
+      transform: scale(1.3);
       overflow: hidden;
   }
 }
@@ -455,9 +455,30 @@ img{
 }
 @media (max-width: 500px) {
   .about-right-title-1{
-    font-size: 40px;
+    font-size: 30px;
   }
   }
+@media (max-width: 370px) {
+    .about-right{
+        margin: 0 auto;
+    }
+    .river-image{
+        height: 180px !important;
+        box-shadow:none !important;
+    }
+    .location-item{
+        height: 250px;
+    }
+    .river-content{
+        position: relative !important;
+    }
+    .header-bottom-img{
+        padding-top: 80px;
+    }
+    .about-right-text{
+        font-size: 18px;
+    }
+}
 /* ========================================================= */
 
 /* river----------------------------------------------------- */
@@ -558,10 +579,11 @@ img{
       margin-top: 0;
   }
   .river img{
-    transform: scale(2.4);
+    /*transform: scale(2.4);*/
     background-position: top ;
 
 }
+
 }
 
 /* ============================================================ */
@@ -752,7 +774,7 @@ img{
   }
   .location-title{
       max-width: 400px;
-      font-size: 50px;
+      font-size: 44px;
       padding: 40px 0;
   }
       .location-bottom{
@@ -854,7 +876,7 @@ img{
         width: 400px;
     }
     .contact-form-button{
-        /*margin-top: 20px;*/
+        margin-top: 20px;
     }
   }
   @media (max-width: 620px) {
@@ -1046,7 +1068,15 @@ img{
 }
 @media (max-width: 500px) {
     .benefit-head-title{
-        font-size: 22px;
+        font-size: 26px;
+    }
+}
+@media (max-width: 370px) {
+    .benefit-slider-item-context-text{
+        font-size: 20px;
+    }
+    .grand-head{
+        font-size: 40px !important;
     }
 }
 
@@ -1178,13 +1208,13 @@ img{
 
 /* grand ------------------------------------------------- */
 .grand{
-  padding: 50px;
+  padding-top: 50px;
 }
 .grand-head{
   color: #5f5348;
   font-size: 60px;
   font-weight: 700;
-  padding: 30px 30px 30px 0;
+  padding: 30px 30px 30px 10px;
 
 }
 .grand-content{
@@ -1309,7 +1339,7 @@ float: right;
 
   .infs{
     width: 100%;
-      height: 700px;
+      height: 550px;
     position: relative;
     padding: 30px;
   }
@@ -1371,14 +1401,35 @@ float: right;
     .inf-head .custom-pagination{
       top: 80%;
       /* left: 10%; */
-      /* flex-direction: column; */
+       flex-direction: column;
       justify-content: start;
       font-size: 14px;
     }
-    .infs img{
-      height: 300px;
-    }
+    /*.infs img{*/
+    /*  height: 300px;*/
+    /*}*/
   }
+@media (max-width: 370px) {
+    /*.inf-head{*/
+    /*    left: 0;*/
+    /*}*/
+    .inf-head-title{
+        font-size: 18px;
+    }
+    .inf-head .custom-pagination{
+        top: 80%;
+        /* left: 10%; */
+        /* flex-direction: column; */
+        justify-content: start;
+        font-size: 14px;
+    }
+    .infs img{
+        height: 100% !important;
+    }
+    .inf{
+        height: 100%;
+    }
+}
 
 /* apartment ----------------------------------------------------------- */
 .apart{
@@ -1676,6 +1727,20 @@ font-size: 27px;
     left: 0;
   }
 }
+@media (max-width: 370px) {
+    .finish .finish-title{
+        display: none;
+    }
+    .finish-container{
+        padding-bottom: 0;
+    }
+    .finish .custom-pagination .pagination-item{
+        font-size: 15px;
+    }
+    .finish .swiper-wrapper{
+        margin-top: 30px;
+    }
+}
 
 .finish .swiper-slide.inner-slide{
   /* width: 100%;
@@ -1732,7 +1797,7 @@ font-size: 27px;
 /* word ------------------------------------------------- */
 
 .word{
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
   #moving-text {
     white-space: nowrap;
@@ -1809,7 +1874,17 @@ font-size: 27px;
   padding-right: 5px ;
 }
 
-
+@media (max-width: 370px) {
+    .develop-head-title{
+        font-size: 20px;
+    }
+    .develop-context{
+        display: none;
+    }
+    .develop-head {
+        padding: 20px 20px;
+    }
+}
 
 
 /* project team */
@@ -1850,9 +1925,9 @@ font-size: 27px;
 
 
 
-.iti--separate-dial-code .iti__selected-flag {
-    background-color: transparent;
-}
+/*.iti--separate-dial-code .iti__selected-flag {*/
+/*    background-color: transparent;*/
+/*}*/
 
 .payment-content{
   display: flex;
@@ -2072,12 +2147,14 @@ font-size: 27px;
 }
 @media (max-width: 630px) {
     .payment-content>div {
-        height: 500px;
+        height: 550px;
     }
     .pay-body-item{
-        padding-left: 25%;
         align-items: center;
         justify-content: center;
+    }
+    .pay-body-item p{
+        padding-left: 13%;
     }
     .payment-left{
         display: flex;
@@ -2123,6 +2200,15 @@ font-size: 27px;
 .phone-payment{
   width: 100%;
 }
+}
+@media (max-width: 370px) {
+    .payment-content{
+        padding: 0;
+        margin: 0;
+    }
+    .payment-content>div:last-child{
+        height: 380px;
+    }
 }
 
 /* ======================================================= */
@@ -2273,6 +2359,10 @@ margin-right: 5px;
     font-size: 30px;
     font-weight: bolder;
 }
+.logo-img-middle1{
+    font-size: 20px;
+    font-weight: bolder;
+}
 .footer-request .button:hover{
   background-color: #4d4239;
   cursor: pointer;
@@ -2383,6 +2473,9 @@ footer .main-web-file .res-file{
   .footer-content .web-file li{
       width: 120px;
   }
+    footer .main-web-file .web-file {
+         flex-direction: row;
+    }
 }
 @media(max-width:434px){
   footer .main-web-file .res-file{
@@ -2391,6 +2484,16 @@ footer .main-web-file .res-file{
   footer .main-web-file{
       display: flex;
   }
+  .footer-main{
+      padding: 0 10px;
+  }
+    .footer-contact .inner-footer-contact{
+        font-size: 14px;
+    }
+    .footer-last-sect{
+        flex-direction: row;
+    }
+
   footer .main-web-file .web-file{
       flex-direction: column;
       align-items: end;
@@ -2413,6 +2516,8 @@ footer .main-web-file .res-file{
 .master-plan-img{
   position: relative;
     max-width: 1200px;
+    margin: 0 auto;
+
 }
 .master-plan-head{
     font-size: 40px;
@@ -2464,7 +2569,7 @@ footer .main-web-file .res-file{
 .plan-section-2{
     position: absolute;
     top: 110%;
-    left: 0;
+    left: -130px;
     opacity: 0;
     padding: 10px;
     width:  265px;
@@ -2487,7 +2592,7 @@ footer .main-web-file .res-file{
 .plan-section-3{
     position: absolute;
     top: 110%;
-    left: -280%;
+    left: -450%;
     opacity: 0;
     padding: 10px;
     width:  265px;
@@ -2509,7 +2614,7 @@ footer .main-web-file .res-file{
 .plan-section-4{
     position: absolute;
     top: 110%;
-    left: 0;
+    left: -130px;
     opacity: 0;
     padding: 10px;
     width:  265px;
@@ -2529,10 +2634,11 @@ footer .main-web-file .res-file{
     z-index: 20000;
     opacity: 1;
 }
+
 .plan-section-5{
     position: absolute;
     top: 110%;
-    left: 0;
+    left: -150px;
     opacity: 0;
     padding: 10px;
     width:  265px;

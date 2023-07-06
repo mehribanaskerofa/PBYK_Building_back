@@ -15,7 +15,7 @@
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                             <li class="pt-2 px-3"><h3 class="card-title">Title</h3></li>
-                            @foreach(config('app.languages') as $langKey)
+                            @foreach(config('app.languages') as $index=>$langKey)
                                 <li class="nav-item ">
                                     <a class="nav-link
                                     {{$loop->first ? ' active ' : '' }}
@@ -46,7 +46,7 @@
                                        </div>
                                        <div class="form-group col-12">
                                            <label>Description</label>
-                                           <textarea id="summernote"  placeholder="Description {{$lang}}" name="{{$lang}}[description]"
+                                           <textarea id="summernote{{$index}}"  placeholder="Description {{$lang}}" name="{{$lang}}[description]"
                                                      class="form-control">
                                            {{old("$lang.description",isset($model) ? ($model->translateOrDefault($lang)->description ?? '') : '')}}
                                            </textarea>

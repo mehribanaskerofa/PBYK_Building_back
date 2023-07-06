@@ -19,7 +19,7 @@
         </div>
     </section>
 
-    <section class="about w" id="about" style=" background: url({{asset('assets//image/about-background.png')}});">
+    <section class="about w" id="about" style=" background: url({{asset('storage/about_back.png')}});">
         <div class="container">
             <div class="about-container w">
                 <div class="about-left">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="river-image">
-                    <img src="{{asset('storage/map.jpg')}}" width="100%" height="350px" alt="river">
+                    <img src="{{asset('storage/map.jpg')}}" width="100%"  alt="river">
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                     <div class="location-name"><span>{{$menus[1]->name}}</span></div>
                     <div class="location-head">
                         <div class="location-text">
-                            <div class="location-text-img"><img src="{{asset('assets/image/location-metro.svg')}}" alt=""></div>
+                            <div class="location-text-img"><img src="{{asset('storage/'.$location->image)}}" alt=""></div>
                             <div class="location-texts">
                                 <div class="location-text-head"><span>{{$location->button}}</span></div>
                                 <div class="location-text-body"><span>100 m</span></div>
@@ -301,7 +301,7 @@
                     </div>
                 </div>
                 <div class="apart-right">
-                    <img src="{{asset('assets/image/Screenshot_4.png')}}" alt="">
+                    <img src="{{asset('storage/menzil_lay.png')}}" alt="">
                 </div>
             </div>
         </div>

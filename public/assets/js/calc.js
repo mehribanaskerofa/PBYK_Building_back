@@ -64,19 +64,27 @@ y.addEventListener('change', function (e) {
     // console.log(group[this.value])
     selected_group=this.value;
     selected_price = group[this.value];
+    group_filter();
+
 });
 z.addEventListener('change', function (e) {
     e.stopPropagation()
     // console.log(this.text, this.value)
     selected_area = parseFloat(this.value)
 
-    z.innerHTML = '';
-    for (var i = 0; i < selected_m.length; i++) {
-            z.innerHTML += `<option value="${selected_m[j][i]}">${selected_m[j][i]}</option>`
 
-    }
-    hesapla()
+    hesapla();
 });
+
+function group_filter(){
+
+    if(selected_group==3){
+        z.innerHTML = '';
+    for (var i = 0; i < selected_m[4].length; i++) {
+        // if()
+        z.innerHTML += `<option value="${selected_m[4][i]}">${selected_m[4][i]}</option>`
+    }}
+}
 precentItem.addEventListener('change', function (e) {
     e.stopPropagation()
     // console.log(this.value)
@@ -91,19 +99,19 @@ monthItem.addEventListener('change', function (e) {
 });
 
 function group_tipi(tip = 1) {
-    console.log('tip:' + tip);
+    // console.log('tip:' + tip);
     if (tip == 1 || tip == 2 || tip == 3) {
         y.innerHTML = ` <option value="0">3-6</option>
                            <option value="1">7-10</option>
                            <option value="2">11-13</option>
-                           <option value="3">pento</option>
+                           <option value="3">PentoHouse</option>
                                            `
     }
     else {
         y.innerHTML = ` <option value="0">3-5</option>
                            <option value="1">6-8</option>
                            <option value="2">9-11</option>
-                           <option value="3">pento</option>
+                           <option value="3">PentoHouse</option>
                                       `
     }
 }
@@ -126,7 +134,7 @@ var deletions = [60.9, 70.2, 91.4, 94.4];
 function menzil_tipi(selected_bina = 0) {
 
     selected_m = m;
-    if (selected_bina == 5) {
+    if (selected_bina == 5 || selected_bina == 4) {
         for (var i = 0; i < selected_m.length; i++) {
             for (var j = selected_m[i].length - 1; j >= 0; j--) {
                 if (deletions.includes(selected_m[i][j])) {

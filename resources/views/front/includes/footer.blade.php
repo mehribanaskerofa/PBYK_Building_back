@@ -1,6 +1,6 @@
 <footer>
     <ul class="footer-contact">
-        <li class="logo-img"><img src="{{asset('assets/image/logo_small.svg')}}" alt=""></li>
+        <div class="logo-img logo-img-middle1">{{\Illuminate\Support\Str::upper($setting->icon)}}</div>
         <div class="inner-footer-contact">
             <li><a href="mailto:{{$setting->email}}">{{$setting->email}}</a></li>
             <li class="logo-img-middle">{{\Illuminate\Support\Str::upper($setting->icon)}}</li>
@@ -23,7 +23,7 @@
 
             </div>
             <div class="main-web-file">
-                <p class="res-file">Lorem, ipsum dolor.</p>
+{{--                <p class="res-file">Lorem, ipsum dolor.</p>--}}
                 <ul class="web-file">
                     <li><a href="#">{{$statics->where('id',3)->first()->title}}<i class="fa-solid fa-building"></i></a></li>
                     <li><a href="#">{{$statics->where('id',4)->first()->title}}<i class="fa-solid fa-folder-open"></i></a></li>
