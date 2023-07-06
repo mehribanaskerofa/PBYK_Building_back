@@ -14,7 +14,7 @@ var selected_m = [];
 var selected_bina = 1;
 var selected_group = 0;
 var selected_price = group[0], selected_area = 0, selected_percent = 100, selected_month = 0;
-
+var add_price=0;
 
 
 // console.log(menzil_tipi[0][2])
@@ -32,10 +32,6 @@ var menzil_area = [{
 
 var menzil_qiymeti = 0;
 
-// var binaTipi = document.getElementById("binaTipi").value;
-//   var blokSayisi = parseInt(document.getElementById("blokSayisi").value);
-//   var evSayisi = parseInt(document.getElementById("evSayisi").value);
-//   var metrekare = parseFloat(document.getElementById("metrekare").value);
 
 
 x = document.getElementsByClassName("select1")[0];
@@ -57,7 +53,7 @@ precent_tipi();
 x.addEventListener('change', function (e) {
     e.stopPropagation()
     selected_bina = this.value
-    console.log(this.value)
+    // console.log(this.value)
     group_tipi(selected_bina);
     menzil_tipi(selected_bina);
 })
@@ -65,24 +61,31 @@ x.addEventListener('change', function (e) {
 
 y.addEventListener('change', function (e) {
     e.stopPropagation()
-    console.log(group[this.value])
+    // console.log(group[this.value])
+    selected_group=this.value;
     selected_price = group[this.value];
 });
 z.addEventListener('change', function (e) {
     e.stopPropagation()
-    console.log(this.text, this.value)
+    // console.log(this.text, this.value)
     selected_area = parseFloat(this.value)
+
+    z.innerHTML = '';
+    for (var i = 0; i < selected_m.length; i++) {
+            z.innerHTML += `<option value="${selected_m[j][i]}">${selected_m[j][i]}</option>`
+
+    }
     hesapla()
 });
 precentItem.addEventListener('change', function (e) {
     e.stopPropagation()
-    console.log(this.value)
+    // console.log(this.value)
     selected_percent = parseInt(this.value)
     hesapla()
 });
 monthItem.addEventListener('change', function (e) {
     e.stopPropagation()
-    console.log(this.value)
+    // console.log(this.value)
     selected_month = parseInt(this.value)
     hesapla()
 });
@@ -116,16 +119,12 @@ function month_tipi() {
         monthItem.innerHTML += `<option value="${element}">${element}</option>`
     });
 }
-// function area_tipi(){
-//       month.forEach(element => {
-//         monthItem.innerHTML+=`<option value="${element}">${element}</option>`
-//       });
-// }
 
 
 var deletions = [60.9, 70.2, 91.4, 94.4];
 
 function menzil_tipi(selected_bina = 0) {
+
     selected_m = m;
     if (selected_bina == 5) {
         for (var i = 0; i < selected_m.length; i++) {
@@ -155,32 +154,37 @@ function hesapla() {
         pay_area = (selected_area * selected_percent) / 100;
         rest_area = selected_area - pay_area;
     }
-console.log(
-    pay_area,rest_area,selected_price
-)
+
+
+
+    if(selected_month==12)
+    {
+    add_price=25;
+    }
+    else if(selected_month==24){
+        add_price=50;
+    }
+    else if(selected_month==36){
+        add_price=100;
+    }
+    else {
+        add_price=25;
+    }
     var paid_price = pay_area * selected_price;
-    var pay_price = rest_area * (selected_price + 25);
-    console.log(paid_price,pay_price)
+    var pay_price = rest_area * (selected_price + add_price);
+    // console.log(paid_price,pay_price)
     var pay_month = 0;
+
+
+
+
     if (month.includes(selected_month)) {
         pay_month = pay_price / selected_month;
     }
-    // console.log(paid_price, pay_month, pay_price)
     all_price.innerHTML=selected_area*selected_price;
     payment_month_price.innerHTML=pay_month.toFixed(2);
     payment_first_price.innerHTML=paid_price.toFixed(2);
 
     payment_date_price.innerHTML=selected_month;
-    //   if (binaTipi === "apartman") {
-    //     birimFiyat = 2000; // Apartman için birim fiyat
-    //   } else if (binaTipi === "villa") {
-    //     birimFiyat = 3000; // Villa için birim fiyat
-    //   } else {
-    //     document.getElementById("sonuc").innerHTML = "Geçersiz bina tipi!";
-    //     return;
-    //   }
 
-    //   var binaDegeri = birimFiyat * blokSayisi * evSayisi * metrekare;
-
-    //   document.getElementById("sonuc").innerHTML = "Bina Değeri: " + binaDegeri;
 }

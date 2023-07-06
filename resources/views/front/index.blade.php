@@ -686,7 +686,7 @@
                             </div>
                             <div>
                                 <div class="pay-body-item">
-                                    <p style="display: block;width: 100%;padding-left: 25%">{{$statics->where('id',26)->first()->title}}</p>
+                                    <p style="display: block;width: 100%;">{{$statics->where('id',26)->first()->title}}</p>
                                     <br>
                                     <div class="payment-left-dropdown">
                                         <div class="dropdown">
