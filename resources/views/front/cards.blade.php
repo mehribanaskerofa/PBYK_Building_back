@@ -38,9 +38,9 @@
                                 <span id="min-price-label">0</span>
                                 <div>
                                 <input type="range" id="min-price" min="0" max="{{$houses->max('price')}}" step="10" value="0">
-                                <input type="range" id="max-price" min="0" max="{{$houses->max('price')}}" step="10" value="{{$houses->max('price')}}">
+                                <input type="range" id="max-price" min="0" max="100000" step="10" value="100000">
                                 </div>
-                                <span id="max-price-label">{{$houses->max('price')}}</span>
+                                <span id="max-price-label">100000</span>
                             </div>
                         </div>
                         <!-- area -->

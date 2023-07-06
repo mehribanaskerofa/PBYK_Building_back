@@ -26,8 +26,8 @@ function filterCards() {
   const minPrice = parseInt(minPriceSlider.value);
   const maxPrice = parseInt(maxPriceSlider.value);
 
-  minPriceLabel.textContent = '$' + minPrice;
-  maxPriceLabel.textContent = '$' + maxPrice;
+  minPriceLabel.textContent =  minPrice;
+  maxPriceLabel.textContent =  maxPrice;
 
   for (let i = 0; i < cards.length; i++) {
     const card = cards[i];

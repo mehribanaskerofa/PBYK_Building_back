@@ -39,8 +39,8 @@ function filterCards() {
   //   }
   // }
 
-  minPriceLabel.textContent = '$' + minPrice;
-  maxPriceLabel.textContent = '$' + maxPrice;
+  minPriceLabel.textContent =  minPrice;
+  maxPriceLabel.textContent =  maxPrice;
   minAreaLabel.textContent = minArea ;
   maxAreaLabel.textContent = maxArea ;
 
