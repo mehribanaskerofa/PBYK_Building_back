@@ -22,8 +22,8 @@ Route::get('/a', function () {
 
 
 Route::post('contact-send',[ContactFrontController::class,'store'])->name('contact-send');
-Route::get('cards',[CardController::class,'index'])->name('cards');
-Route::get('apart/{house}',[CardController::class,'apart'])->name('apart');
+Route::get('apartments',[CardController::class,'index'])->name('cards');
+Route::get('apartment/{house}',[CardController::class,'apart'])->name('apart');
 
 
 Route::get('/calc/{lang}', function ($lang) {

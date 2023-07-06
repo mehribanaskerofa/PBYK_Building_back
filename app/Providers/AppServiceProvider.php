@@ -81,7 +81,6 @@ class AppServiceProvider extends ServiceProvider
         $adverts=$pages->skip(8)->all();
         $setting=$settingService->CachedSettings()->first();
         $statics=$staticService->CachedStatics();
-
         View::share([
             'about'=>$about,
             'menus'=>$menus,
@@ -89,13 +88,10 @@ class AppServiceProvider extends ServiceProvider
             'contact'=>$contact,
             'location'=>$location,
             'developer'=>$developer,
-
             'company'=>$company,
             'buildings'=>$buildings,
             'blocks'=>$blocks,
             'houses'=>$houses,
-
-
             'apart'=>$apart,
             'parking'=>$parking,
             'finish'=>$finish,
@@ -103,7 +99,7 @@ class AppServiceProvider extends ServiceProvider
             'adverts'=>$adverts,
             'grands'=>$grands,
             'rares'=>$rares,
-            'infras'=>$infrastructure,
+            'infras'=>$infrastructure->sortDesc(),
             'galleries'=>$galleries,
             'benefits'=>$benefits,
             'setting'=>$setting,

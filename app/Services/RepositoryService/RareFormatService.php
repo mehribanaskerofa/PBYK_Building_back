@@ -37,6 +37,8 @@ class RareFormatService
         $data=$request->all();
 
         if($request->has('image')){
+//            dd($request->toArray());
+
             $data['image']=$this->fileUploadService
                 ->replaceFile($request->image,$model->image,'rare_format_images');
         }

@@ -31,7 +31,7 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="custom-tabs-one-tabContent">
-                            @foreach(config('app.languages') as $lang)
+                            @foreach(config('app.languages') as $index=>$lang)
                                 <div class="tab-pane fade {{$loop->first ? ' active show' : '' }}" id="title-{{$lang}}"
                                      role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                                    <div class="row">
@@ -44,9 +44,10 @@
                                            <span class="text-danger">{{$message}}</span>
                                            @enderror
                                        </div>
+
                                        <div class="form-group col-12">
                                            <label>Description</label>
-                                           <textarea id="summernote"  placeholder="Description {{$lang}}" name="{{$lang}}[description]"
+                                           <textarea id="summernote{{$index}}"  placeholder="Description {{$lang}}" name="{{$lang}}[description]"
                                                      class="form-control">
                                            {{old("$lang.description",isset($model) ? ($model->translateOrDefault($lang)->description ?? '') : '')}}
                                            </textarea>

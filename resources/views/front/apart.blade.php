@@ -160,7 +160,7 @@
         <div class="detail-slider-side">
             <div class="swiper mySwiperslider">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide selected" data-month="January"><img src="{{asset('storage/'. $house->layout)}}" alt=""></div>
+                    <div class="swiper-slide selected" data-month="January" style="width: 100%;height: 100%"><img  width="1000px" height="1000px" src="{{asset('storage/'. $house->layout)}}" alt=""></div>
                     <div class="swiper-slide" data-month="June"><img src="{{asset('storage/'. $house->block->image)}}" alt=""></div>
                     <div class="swiper-slide" data-month="September"><img src="{{asset('storage/'. $house->block->layout)}}" alt=""></div>
                 </div>
@@ -168,38 +168,36 @@
                 <!-- Ay seçimi -->
             </div>
             <div class="month-slider-filter">
-                <button class="month-button" data-month="January">Планировка</button>
-                <button class="month-button" data-month="June">На этаже</button>
-                <button class="month-button" data-month="September">Генплан</button>
+                <button class="month-button" data-month="January">{{$statics->where('id',35)->first()->title}}</button>
+                <button class="month-button" data-month="June">{{$statics->where('id',36)->first()->title}}</button>
+                <button class="month-button" data-month="September">{{$statics->where('id',37)->first()->title}}</button>
                 <!-- Diğer aylar için gerekli düğmeleri buraya ekleyebilirsiniz -->
             </div>
         </div>
 
         <div class="detail-right-side">
             <div class="detail-right-innner">
-                <h3>{{$house->room}} room - {{$house->area}} m2</h3>
+                <h3>{{$house->room}} {{$statics->where('id',22)->first()->title}} - {{$house->area}} {{$statics->where('id',26)->first()->title}}</h3>
                 <ul class="detail-button">
-                    <li><span>В ипотеку</span></li>
-                    <li><p>{{$house->price}} m </p> <p>Рассчитать</p> </li>
-                    <li><button><a href="{{route('home-index')}}">Забронировать квартиру</a></button></li>
+                    <li><span>{{$statics->where('id',31)->first()->title}}</span></li>
+                    <li><p>{{$house->price}}  </p>  </li>
+                    <li><button><a href="{{route('home-index')}}">{{$statics->where('id',32)->first()->title}}</a></button></li>
                 </ul>
                 <ul class=" detail-text">
                     <li class="detail-text-head">
-                        <p>Основные</p>
+                        <p>{{$statics->where('id',33)->first()->title}}</p>
                     </li>
-                    <li><p>{{$house->block->project->title}} / {{$house->block->block}} block</p></li>
-                    <li> <span>mertebe</span> <span>{{$house->block->project->floor}} / {{$house->floor}}</span></li>
-                    <li> <span>Заселение до</span> <span>{{$house->date}}</span></li>
-                    <li> <span>Заселение до</span> <span>4.5</span></li>
-                    <li> <span>Заселение до</span> <span>4.5</span></li>
+                    <li><p>{{$house->block->project->title}} / {{$house->block->block}} {{$statics->where('id',28)->first()->title}}</p></li>
+                    <li> <span>{{$statics->where('id',27)->first()->title}}</span> <span>{{$house->block->project->floor}} / {{$house->floor}}</span></li>
+                    <li> <span>{{$statics->where('id',29)->first()->title}}</span> <span>{{$house->date}}</span></li>
+
                     <li>
-                        <p class="detail-text-head">Расположение</p>
+                        <p class="detail-text-head">{{$statics->where('id',34)->first()->title}}</p>
                     </li>
-                    <li><span>Проект</span> <span> {{$company->title}}</span></li>
-                    <li><span>Building</span><span> {{$house->block->project->title}}</span></li>
-                    <li><span>Address</span> <span> {{ $house->block->project->address}}{{($house->block->project->floor)}}mertebe</span></li>
+                    <li><span>{{$statics->where('id',19)->first()->title}}</span> <span> {{$company->title}}</span></li>
+                    <li><span>{{$statics->where('id',20)->first()->title}}</span><span> {{$house->block->project->title}}</span></li>
+                    <li><span>{{$statics->where('id',30)->first()->title}}</span> <span> {{ $house->block->project->address}}{{($house->block->project->floor)}}{{$statics->where('id',27)->first()->title}}</span></li>
                     <li><span>Do</span><span>{{$house->block->project->date}} </span></li>
-                    <li><span>Этаж</span> <span> 2 block</span></li>
                 </ul>
             </div>
         </div>

@@ -24,9 +24,10 @@ var paginationItems = document.querySelectorAll('#infs .pagination-item');
 
 paginationItems.forEach(function(item, index) {
   item.addEventListener('click', function(e) {
-    // e.preventDefault();
+    e.preventDefault();
     paginationItems.forEach(function(item){
-         item.style.borderBottom = "";
+        console.log(item.style)
+         item.style.borderBottom = "0px";
             }
         )
 
@@ -38,7 +39,7 @@ paginationItems.forEach(function(item, index) {
 
 
 const swiper2 = new Swiper('.rares .swiper', {
-
+slidesPerView: 3,
   pagination: {
       el: '.rares .swiper-pagination',
   },
@@ -67,7 +68,7 @@ item.addEventListener('click', function() {
       paginationItems[j].style.backgroundColor = '';
       paginationItems[j].style.color = '';
   }
-console.log(this.className)
+// console.log(this.className)
   // Tıklanan düğmenin arka plan rengini değiştirin
   this.style.backgroundColor = '#605348';
   this.style.color = '#fff';

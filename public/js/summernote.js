@@ -1,4 +1,6 @@
 
 $(document).ready(function() {
-    $('#summernote').summernote();
+    $('#summernote0').summernote();
+    $('#summernote1').summernote();
+    $('#summernote2').summernote();
 });

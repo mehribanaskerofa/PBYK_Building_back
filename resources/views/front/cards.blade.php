@@ -11,14 +11,14 @@
 @endpush
 @section('content')
     <div class="filter-for-cards container">
-        <h1>Menziller</h1>
+        <h1>{{$statics->where('id',24)->first()->title}}</h1>
 
         <div class="card-filter">
             <div class="card-filters-up">
                 <div class="buttons">
-                    <span>Otaqlar</span>
+                    <span>{{$statics->where('id',21)->first()->title}}</span>
                     <div class="buttons-inside">
-                        <span>Studiya</span>
+                        <span>{{$statics->where('id',23)->first()->title}}</span>
                         <button onclick="filterCardsByRoomCount(1)">1 </button>
                         <button onclick="filterCardsByRoomCount(2)">2 </button>
                         <button onclick="filterCardsByRoomCount(3)">3 </button>
@@ -33,26 +33,26 @@
                 <div class="wrapper-main">
                     <div class="wrapper">
                         <div class="price-range p-range">
-                            <p>rooms</p>
+                            <p>{{$statics->where('id',25)->first()->title}}</p>
                             <div class="common-price">
-                                <span id="min-price-label">$0</span>
+                                <span id="min-price-label">0</span>
                                 <div>
-                                <input type="range" id="min-price" min="0" max="1000" step="10" value="0">
-                                <input type="range" id="max-price" min="0" max="1000" step="10" value="1000">
+                                <input type="range" id="min-price" min="0" max="{{$houses->max('price')}}" step="10" value="0">
+                                <input type="range" id="max-price" min="0" max="{{$houses->max('price')}}" step="10" value="{{$houses->max('price')}}">
                                 </div>
-                                <span id="max-price-label">$1000</span>
+                                <span id="max-price-label">{{$houses->max('price')}}</span>
                             </div>
                         </div>
                         <!-- area -->
                         <div class="area-range p-range">
-                            <p>area</p>
+                            <p>{{$statics->where('id',26)->first()->title}}</p>
                             <div class="common-area">
                                 <span id="min-area-label">0</span>
                                 <div>
-                                <input type="range" id="min-area" min="0" max="100" step="1" value="0">
-                                <input type="range" id="max-area" min="0" max="100" step="1" value="100">
+                                <input type="range" id="min-area" min="0" max="{{$houses->max('area')}}" step="1" value="0">
+                                <input type="range" id="max-area" min="0" max="{{$houses->max('area')}}" step="1" value="{{$houses->max('area')}}">
                                 </div>
-                                <span id="max-area-label">100</span>
+                                <span id="max-area-label">{{$houses->max('area')}}</span>
                             </div>
                         </div>
                         <br>
@@ -80,7 +80,7 @@
                     <!-- Swiper -->
                     <!-- Swiper -->
                     <div class="swiper cardSwiper">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper" data-id="{{$house->block->id}}">
                             <div class="swiper-slide"> <img src="{{asset('storage/'.$house->layout)}}" alt=""></div>
                             <div class="swiper-slide"> <img src="{{asset('storage/'.$house->block->layout)}}" alt=""></div>
                             <div class="swiper-slide"> <img src="{{asset('storage/'.$house->block->image)}}" alt=""></div>
@@ -91,13 +91,13 @@
                 </div>
                 <div class="card-main-price">
                     <div class="main-price-left">
-                        <h3>{{$house->room}} - room , area - {{$house->area}}</h3>
+                        <h3>{{$house->room}} - {{$statics->where('id',22)->first()->title}} , {{$statics->where('id',26)->first()->title}} - {{$house->area}}</h3>
                         <div class="current-price">
                             {{$house->price}}
                         </div>
                     </div>
                     <div class="main-price-right">
-                        <div class="main-price-old">{{$house->block->block}} - block</div>
+                        <div class="main-price-old">{{$house->block->block}} - {{$statics->where('id',28)->first()->title}}</div>
                         <div class="pink-tag">
                             <span> {{$house->block->project->title}} </span>
                         </div>
@@ -106,12 +106,12 @@
                 <hr>
                 <ul class="card-main-specs">
                     <li class="specs-up">
-                        <p>Project</p>
+                        <p>{{$statics->where('id',19)->first()->title}}</p>
                         <p> {{$company->title}}
                         </p>
                     </li>
                     <li class="specs-down">
-                        <p>Bina</p>
+                        <p>{{$statics->where('id',20)->first()->title}}</p>
                         <p>{{$house->block->project->title}}</p>
                     </li>
                 </ul>

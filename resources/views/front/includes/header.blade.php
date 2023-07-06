@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="header-top-title">{{$company->title}}</div>
+                <div class="header-top-title"><a href="{{route('home-index')}}">{{$company->title}}</a></div>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
                 <div class="menu-bar-bottom-content">
                     <ul class="menu-bar-bottom-content-items">
                         <li class="border-none"><span><a href="">{{$statics->where('id',3)->first()->title}}<i class="fa-solid fa-building"></i></a></span></li>
-                        <li><span><a href=""> {{$statics->where('id',4)->first()->title}}<i class="fa-solid fa-folder-open"></i></a></span></li>
+                        <li><span><a href="{{asset('storage/project.pdf')}}" download> {{$statics->where('id',4)->first()->title}}<i class="fa-solid fa-folder-open"></i></a></span></li>
                     </ul>
                 </div>
             </div>

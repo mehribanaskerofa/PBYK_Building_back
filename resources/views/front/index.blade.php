@@ -31,14 +31,14 @@
                     </div>
                     <div class="about-right-text">
 {{--                        <p>{{implode('', array_slice('!', 0, strlen($about->description) / 2))}}</p>--}}
-                       <?php
-                       $parts = explode('!', $about->description);
-                       $firstPart = $parts[0];
-                       $secondPart = $parts[1];
-                       ?>
+{{--                       <?php--}}
+{{--                       $parts = explode('!', $about->description);--}}
+{{--                       $firstPart = $parts[0];--}}
+{{--                       $secondPart = $parts[1];--}}
+{{--                       ?>--}}
 {{--                        <p>{{$firstPart}}</p>--}}
 {{--                        <p>{{$secondPart}}</p>--}}
-                        <p>{{$about->description}}</p>
+                        <p>{!! $about->description !!}</p>
                     </div>
                     <div class="about-right-image">
                         <img src="{{asset('storage/'.$about->image)}}" alt="">
@@ -57,7 +57,7 @@
                         <h1 style="max-width: 600px">{{$river->title}}</h1>
                     </div>
                     <div class="river-context">
-                        <p>{{$river->description}}</p>
+                        <p>{!! $river->description !!}</p>
 {{--                        <p>The choice is yours!</p>--}}
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                             <div class="location-item">
                                 <div class="location-item-content">
                                     <div class="location-item-title"><span>{{$advert->title}}</span></div>
-                                    <div class="location-item-text"><span>{{$advert->description}}</span></div>
+                                    <div class="location-item-text"><span>{!! $advert->description !!}</span></div>
                                 </div>
                                 <div class="location-item-subtext">
                                     <p><i class="fa-solid fa-person-walking"></i><span>{{$advert->button}}</span></p>
@@ -115,7 +115,7 @@
                     <div class="location-bottom-context">
                         <div class="location-sticky">
                             <?php
-                            $parts1 = explode('!', $location->description);
+//                            $parts1 = explode('!', $location->description);
 //                            dd($parts1)
 //                            $firstPart1 = $parts1[0];
 //                            $secondPart1 = $parts1[1];
@@ -138,7 +138,7 @@
         <div class="container">
             <div class="contact-container w">
                 <div class="contact-content">
-                    <h1>{{$contact->title}}  <span>{{$contact->description}}</span></h1>
+                    <h1>{{$contact->title}}  <span>{!!  $contact->description!!}</span></h1>
                 </div>
                 <div class="contact-context">
                     <div class="contact-form">
@@ -188,7 +188,7 @@
                                     <span>{{$benefit->title}}</span>
                                 </div>
                                 <div class="benefit-slider-item-context-text">
-                                    <p>{{$benefit->description}}</p>
+                                    <p>{!!$benefit->description!!}</p>
                                 </div>
                             </div>
                             <div class="benefit-slider-item-img">
@@ -212,7 +212,7 @@
                         <div class="specious-room-content">
                             <div class="specious-room-context">
                                 <div class="specious-room-title"><p>{{$apart->title}}</p></div>
-                                <div class="specious-room-text"><p>{{$apart->description}}</p></div>
+                                <div class="specious-room-text"><p>{!!$apart->description!!}</p></div>
                             </div>
 {{--                            <div class="specious-room-button"><a>Select storage rooms</a></div>--}}
                         </div>
@@ -225,7 +225,7 @@
                         <div class="specious-room-content">
                             <div class="specious-room-context">
                                 <div class="specious-room-title"><p>{{$parking->title}}</p></div>
-                                <div class="specious-room-text"><p>{{$parking->description}}</p></div>
+                                <div class="specious-room-text"><p>{!! $parking->description!!}</p></div>
                             </div>
 {{--                            <div class="specious-room-button"><a>Select storage rooms</a></div>--}}
                         </div>
@@ -250,7 +250,7 @@
                                 <i class="fa-solid fa-plus"></i>
                             </div>
                             <div class="grand-item-title"><span>{{$grand->title}}</span></div>
-                            <div class="grand-item-text"><span>{{$grand->description}}</span></div>
+                            <div class="grand-item-text"><span>{!! $grand->description!!}</span></div>
                         </div>
                     </div>
                         @endforeach
@@ -325,10 +325,10 @@
                             <div class="rare-item-content">
                                 <div class="rare-item-context">
                                     <div class="rare-item-title"><span>{{$rare->title}}</span></div>
-                                    <div class="rare-item-text"><span>{{$rare->description}}</span></div>
+                                    <div class="rare-item-text"><span>{!! $rare->description!!}</span></div>
                                 </div>
                                 <div class="rare-item-button">
-                                    <button class="rare-item-btn">Leave Request</button>
+                                    <button class="rare-item-btn"><a href="#contact-section"></a>{{$statics->where('id',7)->first()->title}}</button>
                                 </div>
                             </div>
                         </div>
@@ -442,38 +442,35 @@
     </section>
 
 
-    <section class="master-plan w">
+    <section class="master-plan w" >
         <div class="container">
             <span class="master-plan-head">{{$statics->where('id',18)->first()->title}}</span>
             <div class="master-plan-img w">
                 <img src="{{asset('storage/structure.jpg')}}" alt="masterplan">
                 <div class="plan-btn1"><span class=" masterplan-btn">+</span>
                     <div class="plan-section-1">
-                        <div class="plan-section-title"><span>1 section</span></div>
+                        <div class="plan-section-title"><span>{{$statics->where('id',20)->first()->title}} {{$buildings[0]->title}} </span></div>
                         <div class="plan-section-content">
                             <table>
                                 <thead>
-                                <tr>
-                                    <th>Studio</th>
-                                    <th>from 12 000 000 azn</th>
-                                </tr>
+
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>1 otaqli</td>
-                                    <td>from 13 000 000 azn</td>
+                                    <td>3 - 6 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1200 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>2 otaqli</td>
-                                    <td>from 16 000 000 azn</td>
+                                    <td>7 - 10 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1250 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>3 otaqli</td>
-                                    <td>from 19 000 000 azn</td>
+                                    <td>11 - 13 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1300 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>4 otaqli</td>
-                                    <td>from 23 000 000 azn</td>
+                                    <td>{{$statics->where('id',38)->first()->title}}</td>
+                                    <td>1500 azn/m²</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -482,31 +479,28 @@
                 </div>
                 <div class="plan-btn2"><span class="masterplan-btn">+</span>
                     <div class="plan-section-2">
-                        <div class="plan-section-title"><span>2 section</span></div>
+                        <div class="plan-section-title"><span>{{$statics->where('id',20)->first()->title}} {{$buildings[1]->title}}</span></div>
                         <div class="plan-section-content">
                             <table>
                                 <thead>
-                                <tr>
-                                    <th>Studio</th>
-                                    <th>from 12 000 000 azn</th>
-                                </tr>
+
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>1 otaqli</td>
-                                    <td>from 13 000 000 azn</td>
+                                    <td>3 - 6 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1200 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>2 otaqli</td>
-                                    <td>from 16 000 000 azn</td>
+                                    <td>7 - 10 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1250 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>3 otaqli</td>
-                                    <td>from 19 000 000 azn</td>
+                                    <td>11 - 13 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1300 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>4 otaqli</td>
-                                    <td>from 23 000 000 azn</td>
+                                    <td>{{$statics->where('id',38)->first()->title}}</td>
+                                    <td>1500 azn/m²</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -515,31 +509,28 @@
                 </div>
                 <div class="plan-btn3"><span class="masterplan-btn">+</span>
                     <div class="plan-section-3">
-                        <div class="plan-section-title"><span>3 section</span></div>
+                        <div class="plan-section-title"><span>{{$statics->where('id',20)->first()->title}} {{$buildings[2]->title}} </span></div>
                         <div class="plan-section-content">
                             <table>
                                 <thead>
-                                <tr>
-                                    <th>Studio</th>
-                                    <th>from 12 000 000 azn</th>
-                                </tr>
+
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>1 otaqli</td>
-                                    <td>from 13 000 000 azn</td>
+                                    <td>3 - 6 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1200 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>2 otaqli</td>
-                                    <td>from 16 000 000 azn</td>
+                                    <td>7 - 10 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1250 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>3 otaqli</td>
-                                    <td>from 19 000 000 azn</td>
+                                    <td>11 - 13 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1300 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>4 otaqli</td>
-                                    <td>from 23 000 000 azn</td>
+                                    <td>{{$statics->where('id',38)->first()->title}}</td>
+                                    <td>1500 azn/m²</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -548,31 +539,28 @@
                 </div>
                 <div class="plan-btn4"><span class="masterplan-btn">+</span>
                     <div class="plan-section-4">
-                        <div class="plan-section-title"><span>4 section</span></div>
+                        <div class="plan-section-title"><span>{{$statics->where('id',20)->first()->title}} {{$buildings[3]->title}}</span></div>
                         <div class="plan-section-content">
                             <table>
                                 <thead>
-                                <tr>
-                                    <th>Studio</th>
-                                    <th>from 12 000 000 azn</th>
-                                </tr>
+
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>1 otaqli</td>
-                                    <td>from 13 000 000 azn</td>
+                                    <td>3 - 5 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1200 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>2 otaqli</td>
-                                    <td>from 16 000 000 azn</td>
+                                    <td>6 - 8 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1250 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>3 otaqli</td>
-                                    <td>from 19 000 000 azn</td>
+                                    <td>9 - 11 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1300 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>4 otaqli</td>
-                                    <td>from 23 000 000 azn</td>
+                                    <td>{{$statics->where('id',38)->first()->title}}</td>
+                                    <td>1500 azn/m²</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -581,31 +569,28 @@
                 </div>
                 <div class="plan-btn5"><span class="masterplan-btn">+</span>
                     <div class="plan-section-5">
-                        <div class="plan-section-title"><span>5 section</span></div>
+                        <div class="plan-section-title"><span>{{$statics->where('id',20)->first()->title}} {{$buildings[4]->title}}</span></div>
                         <div class="plan-section-content">
                             <table>
                                 <thead>
-                                <tr>
-                                    <th>Studio</th>
-                                    <th>from 12 000 000 azn</th>
-                                </tr>
+
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>1 otaqli</td>
-                                    <td>from 13 000 000 azn</td>
+                                    <td>3 - 5 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1200 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>2 otaqli</td>
-                                    <td>from 16 000 000 azn</td>
+                                    <td>6 - 8 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1250 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>3 otaqli</td>
-                                    <td>from 19 000 000 azn</td>
+                                    <td>9 - 11 {{$statics->where('id',27)->first()->title}}</td>
+                                    <td>1300 azn/m²</td>
                                 </tr>
                                 <tr>
-                                    <td>4 otaqli</td>
-                                    <td>from 23 000 000 azn</td>
+                                    <td>{{$statics->where('id',38)->first()->title}}</td>
+                                    <td>1500 azn/m²</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -635,11 +620,11 @@
                         <img src="{{asset('storage/'.$developer->image)}}" alt="">
                     </div>
                     <div class="develop-content">
-                        <div class="develop-context"><span>{{$developer->description}}</span></div>
+                        <div class="develop-context"><span>{!!  $developer->description!!}</span></div>
                         <div class="develop-links">
                             <ul class="develop-link">
 {{--                                <li><a href=""><i class="fa-solid fa-book"></i>Construction progress</a></li>--}}
-                                <li><a href=""><i class="fa-solid fa-folder-open"></i>{{$statics->where('id',4)->first()->title}}</a></li>
+                                <li><a href="{{asset('storage/project.pdf')}}" download><i class="fa-solid fa-folder-open"></i>{{$statics->where('id',4)->first()->title}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -662,92 +647,124 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
-{{--    <section class="payment w">--}}
-{{--        <div class="container">--}}
-{{--            <div class="payment-container">--}}
-{{--                <div class="payment-head">--}}
-{{--                    <div class="payment-subtitle"><span>PAYMENT</span></div>--}}
+    <section class="payment w">
+        <div class="container">
+            <div class="payment-container">
+                <div class="payment-head">
+                    <div class="payment-subtitle"><span>{{$statics->where('id',38)->first()->title}}</span></div>
 {{--                    <div class="payment-title"><span>KREDIT KALKULYATORU</span></div>--}}
-{{--                </div>--}}
-{{--                <div class="payment-content">--}}
-{{--                    <div class="payment-left">--}}
-{{--                        <div class="payment-left-head"><span>Daxili Kredit Kalkulyatoru</span></div>--}}
-{{--                        <div class="payment-left-body">--}}
-{{--                            <div class="payment-left-dropdown">--}}
-{{--                                <div class="dropdown">--}}
-{{--                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                        Dropdown button1--}}
-{{--                                    </button>--}}
-{{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-{{--                                        <a class="dropdown-item" href="#">Action</a>--}}
-{{--                                        <a class="dropdown-item" href="#">Another action</a>--}}
-{{--                                        <a class="dropdown-item" href="#">Something else here</a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="payment-left-dropdown">--}}
-{{--                                <div class="dropdown">--}}
-{{--                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                        Dropdown button1--}}
-{{--                                    </button>--}}
-{{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-{{--                                        <a class="dropdown-item" href="#">Action</a>--}}
-{{--                                        <a class="dropdown-item" href="#">Another action</a>--}}
-{{--                                        <a class="dropdown-item" href="#">Something else here</a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="payment-left-dropdown">--}}
-{{--                                <div class="dropdown">--}}
-{{--                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                        Dropdown button1--}}
-{{--                                    </button>--}}
-{{--                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-{{--                                        <a class="dropdown-item" href="#">Action</a>--}}
-{{--                                        <a class="dropdown-item" href="#">Another action</a>--}}
-{{--                                        <a class="dropdown-item" href="#">Something else here</a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="payment-left-dropdown">--}}
-{{--                                <div class="payment-left-dropdown-small">--}}
-{{--                                    <div class="dropdown">--}}
-{{--                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                            Dropdown button1--}}
-{{--                                        </button>--}}
-{{--                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-{{--                                            <a class="dropdown-item" href="#">Action</a>--}}
-{{--                                            <a class="dropdown-item" href="#">Another action</a>--}}
-{{--                                            <a class="dropdown-item" href="#">Something else here</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="payment-left-dropdown">--}}
-{{--                                <div class="payment-left-dropdown-small">--}}
-{{--                                    <div class="dropdown">--}}
-{{--                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                                            Dropdown button1--}}
-{{--                                        </button>--}}
-{{--                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-{{--                                            <a class="dropdown-item" href="#">Action</a>--}}
-{{--                                            <a class="dropdown-item" href="#">Another action</a>--}}
-{{--                                            <a class="dropdown-item" href="#">Something else here</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="payment-left-dropdown">--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="payment-right" style="width: 300px">--}}
+                </div>
+                <div class="payment-content">
+                    <div class="payment-left">
 
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+                        <div class="payment-left-head"><span>{{$statics->where('id',40)->first()->title}}</span></div>
+
+                        <div class="payment-left-body">
+                            <div class="pay-body-item">
+                                <div class="payment-left-dropdown">
+                                    <span>{{$statics->where('id',20)->first()->title}}</span>
+                                    <div class="dropdown">
+                                        <div class="custom-select">
+                                            <select class="select1">
+                                                @foreach($buildings as $index=>$built)
+                                                <option value="{{$index+1}}">{{$built->title}}{{$statics->where('id',22)->first()->title}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="payment-left-dropdown">
+                                    <span>{{$statics->where('id',22)->first()->title}}</span>
+                                    <div class="dropdown">
+                                        <div class="custom-select">
+                                            <select class="select2">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="pay-body-item">
+                                    <p style="display: block;width: 100%;padding-left: 25%">{{$statics->where('id',26)->first()->title}}</p>
+                                    <br>
+                                    <div class="payment-left-dropdown">
+                                        <div class="dropdown">
+
+                                            <div class="custom-select">
+                                                <select class="select3">
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="payment-left-dropdown">
+                                        <div class="dropdown">
+                                            <div class="custom-select">
+                                                <div class="select-item-text">
+                                                    <span>{{$statics->where('id',41)->first()->title}}</span>
+                                                    <select class="select4">
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pay-body-item">
+                                    <div class="payment-left-dropdown">
+                                        <div class="dropdown">
+                                            <div class="custom-select">
+                                                <div class="select-item-text">
+                                                    <span>{{$statics->where('id',42)->first()->title}}</span>
+                                                    <select class="select5">
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="payment-left-dropdown">
+                                        <div class="dropdown">
+                                            <div class="custom-select">
+                                                <div class="select-item-text">
+                                                    <span>{{$statics->where('id',43)->first()->title}}</span>
+                                                    <span class="all-price"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="payment-left-button">
+                                <button onclick="hesable()" >{{$statics->where('id',44)->first()->title}}</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="payment-right" >
+                        <div class="payment-right-top">
+                            <div class="payment-right-top-head"><span>{{$statics->where('id',42)->first()->title}}</span></div>
+                            <div class="payment-right-title"><span class="payment-right-price pay-month" >0</span></div>
+                        </div>
+                        <div class="payment-right-bottom">
+                            <div class="payment-right-bottom-item">
+                                <p class="payment-right-bottom-item-text">{{$statics->where('id',41)->first()->title}}</p>
+                                <div class="payment-bottom-title"><span class="payment-bottom-price pay-first" >0</span></div>
+                            </div>
+                            <div class="payment-right-bottom-item">
+                                <p class="payment-right-bottom-item-text">{{$statics->where('id',45)->first()->title}}</p>
+                                <div class="payment-bottom-title"><span class="payment-bottom-price pay-date" >0</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <section class="galary w" id="galary">
         <div class="container">
