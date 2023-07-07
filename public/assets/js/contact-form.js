@@ -7,9 +7,9 @@ var iti=window.intlTelInput(input1, {
     onlyCountries: ["az",'tr','ru'],
 });
 
-window.intlTelInput(input2, {
-  separateDialCode: true
-});
+// window.intlTelInput(input2, {
+//   separateDialCode: true
+// });
 
 $('#contactBtn-1').submit(function(e) {
     e.preventDefault(); //
