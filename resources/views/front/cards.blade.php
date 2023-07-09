@@ -1,12 +1,12 @@
 @extends('front.layouts.front')
 
 @push('css')
-    <link rel="stylesheet" href="{{asset('assets/css/cards.css')}}">
 {{--    <link rel="stylesheet" href="node_modules/nouislider/distribute/nouislider.min.css">--}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.css">
 
+<link rel="stylesheet" href="{{asset('assets/css/cards.css')}}">
 
 @endpush
 @section('content')
@@ -33,28 +33,44 @@
                 <div class="wrapper-main">
                     <div class="wrapper">
                         <div class="price-range p-range">
-                            <p>{{$statics->where('id',25)->first()->title}}</p>
-                            <div class="common-price">
-                                <span id="min-price-label">0</span>
-                                <div>
-                                <input type="range" id="min-price" min="0" max="{{$houses->max('price')}}" step="10" value="0">
-                                <input type="range" id="max-price" min="0" max="100000" step="10" value="100000">
-                                </div>
-                                <span id="max-price-label">100000</span>
-                            </div>
-                        </div>
-                        <!-- area -->
-                        <div class="area-range p-range">
                             <p>{{$statics->where('id',26)->first()->title}}</p>
-                            <div class="common-area">
-                                <span id="min-area-label">0</span>
-                                <div>
-                                <input type="range" id="min-area" min="0" max="{{$houses->max('area')}}" step="1" value="0">
-                                <input type="range" id="max-area" min="0" max="{{$houses->max('area')}}" step="1" value="{{$houses->max('area')}}">
+                            <div class="common-price">
+                                <div class="buttons-inside">
+                                <select name="cars" id="cars" class="filter-dropdown-area-select">
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="mercedes">Mercedes</option>
+                                    <option value="audi">Audi</option>
+                                </select>
                                 </div>
-                                <span id="max-area-label">{{$houses->max('area')}}</span>
                             </div>
                         </div>
+
+
+
+{{--                        <div class="price-range p-range">--}}
+{{--                            <p>{{$statics->where('id',25)->first()->title}}</p>--}}
+{{--                            <div class="common-price">--}}
+{{--                                <span id="min-price-label">0</span>--}}
+{{--                                <div>--}}
+{{--                                <input type="range" id="min-price" min="0" max="{{$houses->max('price')}}" step="10" value="0">--}}
+{{--                                <input type="range" id="max-price" min="0" max="100000" step="10" value="100000">--}}
+{{--                                </div>--}}
+{{--                                <span id="max-price-label">100000</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                        <!-- area -->
+{{--                        <div class="area-range p-range">--}}
+{{--                            <p>{{$statics->where('id',26)->first()->title}}</p>--}}
+{{--                            <div class="common-area">--}}
+{{--                                <span id="min-area-label">0</span>--}}
+{{--                                <div>--}}
+{{--                                <input type="range" id="min-area" min="0" max="{{$houses->max('area')}}" step="1" value="0">--}}
+{{--                                <input type="range" id="max-area" min="0" max="{{$houses->max('area')}}" step="1" value="{{$houses->max('area')}}">--}}
+{{--                                </div>--}}
+{{--                                <span id="max-area-label">{{$houses->max('area')}}</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <br>
                     </div>
                 </div>
@@ -151,7 +167,6 @@
 @endsection
 
 @push('js')
-    <script src="{{asset('assets/js/cards.js')}}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/nouislider/distribute/nouislider.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -160,7 +175,7 @@
 {{--    <script src="node_modules/nouislider/distribute/nouislider.min.js"></script>--}}
     <!-- Swiper JS -->
 
-
+    <script src="{{asset('assets/js/cards.js')}}"></script>
     <script src="{{asset('assets/js/filterarea.js')}}"></script>
 
 @endpush

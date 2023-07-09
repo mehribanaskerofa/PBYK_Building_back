@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wow</title>
+    <title>bpyk</title>
 
+
+{{--    <link rel="preconnect" href="https://fonts.googleapis.com">--}}
+{{--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--}}
+{{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&family=Signika+Negative:wght@400;500&display=swap" rel="stylesheet">--}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Signika+Negative:wght@400;500&display=swap" rel="stylesheet">
+
+
+    {{--    <link rel="preconnect" href="https://fonts.googleapis.com">--}}
+{{--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>--}}
+{{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Signika+Negative:wght@400;500&display=swap" rel="stylesheet">--}}
     <!-- contact -->
 {{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>--}}
 
@@ -29,7 +35,6 @@
 
     <link rel="stylesheet" href="{{asset('assets/css/reset.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
-
     @stack('css')
     <meta name="csrf" content="{{csrf_token()}}">
 

@@ -30,7 +30,7 @@
                 </ul>
             </div>
         </div>
-        <hr>
+{{--        <hr>--}}
         <div class="footer-request">
             <div class="request-text">
                 <p> {{$statics->where('id',16)->first()->title}} </p>

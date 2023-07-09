@@ -1,12 +1,14 @@
 var group = [1200, 1250, 1300, 1500];
 var m = [
-    [60.9, 70.2, 61.1, 60.5],//1
-    [91.7, 91.1, 91.4, 94.4],//2
-    [145.5],//3
-    [194.9],//4
-    [336.5, 386.5]//pento
+
+        [ 60.5,60.9,  61.1, 70.2],//1
+        [91.1, 91.4, 91.7,  94.4],//2
+        [145.5],//3
+        [194.9],//4
+        [336.5, 386.5]//pento
+
 ];
-var precent = [25, 50, 100];
+var precent = [20, 30, 50,100];
 var month = [12, 24, 36];
 
 var selected_m = [];
@@ -78,7 +80,7 @@ z.addEventListener('change', function (e) {
 
 function group_filter(){
 
-    if(selected_group==3){
+    if(selected_group==2){
         z.innerHTML = '';
     for (var i = 0; i < selected_m[4].length; i++) {
         // if()
@@ -100,7 +102,7 @@ monthItem.addEventListener('change', function (e) {
 
 function group_tipi(tip = 1) {
     // console.log('tip:' + tip);
-    if (tip == 1 || tip == 2 || tip == 3) {
+    if (tip == 2) {
         y.innerHTML = ` <option value="0">3-6</option>
                            <option value="1">7-10</option>
                            <option value="2">11-13</option>
@@ -134,7 +136,7 @@ var deletions = [60.9, 70.2, 91.4, 94.4];
 function menzil_tipi(selected_bina = 0) {
 
     selected_m = m;
-    if (selected_bina == 5 || selected_bina == 4) {
+    if (selected_bina == 2) {
         for (var i = 0; i < selected_m.length; i++) {
             for (var j = selected_m[i].length - 1; j >= 0; j--) {
                 if (deletions.includes(selected_m[i][j])) {
@@ -158,6 +160,7 @@ function hesapla() {
 
     var pay_area = 0;
     var rest_area = 0;
+    // console.log(selected_percent);
     if (precent.includes(selected_percent)) {
         pay_area = (selected_area * selected_percent) / 100;
         rest_area = selected_area - pay_area;
@@ -189,7 +192,7 @@ function hesapla() {
     if (month.includes(selected_month)) {
         pay_month = pay_price / selected_month;
     }
-    all_price.innerHTML=selected_area*selected_price;
+    all_price.innerHTML=(selected_area*selected_price).toFixed(2);
     payment_month_price.innerHTML=pay_month.toFixed(2);
     payment_first_price.innerHTML=paid_price.toFixed(2);
 

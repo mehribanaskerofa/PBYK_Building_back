@@ -50,10 +50,56 @@
             height: 390px;
             margin-bottom: 36px;
         }
-        /* .card-filter-detail .swiper-wrapper .swiper-slide{
-            width: 405px !important;
-            height: 405px !important;
-        } */
+        .detail-right-head span:first-child{
+            font-size: 50px;
+            font-weight: 600;
+            padding: 0 10px;
+
+        }
+        .detail-right-head span:last-child{
+            font-size: 18px;
+            font-weight: 400;
+
+        }
+        .detail-right-body
+        {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .detail-right-body ul
+        {
+            padding: 30px 0;
+        }
+        .detail-right-body:nth-child(1) ul
+        {
+            font-weight: bolder;
+        }
+        .detail-right-body ul li
+        {
+            font-size: 18px;
+            padding: 10px 0;
+            padding-left: 5px;
+        }
+        .detail-right-body ul:last-child li
+        {
+            text-align: end;
+        }
+        .detail-right-head{
+            margin: 0 auto;
+            padding-bottom: 15px;
+            border-bottom: 2px solid black;
+        }
+        .detail-right-side>div
+        {
+            width: 100%;
+            padding: 0 40px;
+        }
+
+            /* .card-filter-detail .swiper-wrapper .swiper-slide{
+                width: 405px !important;
+                height: 405px !important;
+            } */
         .card-filter-detail  .swiper-wrapper img{
             width: 100%;
             height: 100%;
@@ -68,48 +114,14 @@
         .card-filter-detail .detail-right-side{
             border-left: 1px solid gray;
             padding: 15px;
-        }
-        .card-filter-detail .detail-right-side .detail-text li{
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            /*align-items: center;*/
+            justify-content: center;
         }
-        .card-filter-detail .detail-right-side .detail-button li{
-            display: flex;
-            justify-content: space-between;
 
-        }
-        .card-filter-detail .detail-right-side .detail-right-innner span{
-            color: #65676e;
-            margin: 5px 0px 5px 0px;
-        }
-        .card-filter-detail .detail-right-side .detail-right-innner h3{
-            font-size: 2rem;
-        }
         .card-filter-detail .detail-right-side{
             /*background-color: #f4f7f9;*/
-        }
-        .card-filter-detail .detail-right-innner .detail-button{
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-        }
-        .card-filter-detail .detail-right-innner .detail-button button{
-            width: 100%;
-            height: 50px;
-            border-radius: 10px;
-            border: none;
-            background-color: rgb(159 191 221) ;
-            color: white;
-            font-weight: bold;
-        }
-        .card-filter-detail .detail-right-innner .detail-button button a{
-            color: white;
-        }
-        .card-filter-detail .detail-right-innner p{
-            color: #161921;
-        }
-        .card-filter-detail .detail-right-side .detail-text{
-            padding-left: 30px;
         }
 
         @media (max-width:970px) {
@@ -120,12 +132,9 @@
                 margin-top: 40px;
                 width: 100%;
             }
-            .card-filter-detail .detail-slider-side{
-                width: 100%;
-                margin-right: 0px;
-            }
             .card-filter-detail .month-slider-filter{
                 width: 90%;
+                margin-right: 0px;
             }
             .card-filter-detail .month-slider-filter button{
                 width: 30%;
@@ -171,34 +180,44 @@
                 <button class="month-button" data-month="January">{{$statics->where('id',35)->first()->title}}</button>
                 <button class="month-button" data-month="June">{{$statics->where('id',36)->first()->title}}</button>
                 <button class="month-button" data-month="September">{{$statics->where('id',37)->first()->title}}</button>
-                <!-- Diğer aylar için gerekli düğmeleri buraya ekleyebilirsiniz -->
             </div>
         </div>
 
         <div class="detail-right-side">
-            <div class="detail-right-innner">
-                <h3>{{$house->room}} {{$statics->where('id',22)->first()->title}} - {{$house->area}} {{$statics->where('id',26)->first()->title}}</h3>
-                <ul class="detail-button">
-                    <li><span>{{$statics->where('id',31)->first()->title}}</span></li>
-                    <li><p>{{$house->price}}  </p>  </li>
-                    <li><button><a href="{{route('home-index')}}">{{$statics->where('id',32)->first()->title}}</a></button></li>
-                </ul>
-                <ul class=" detail-text">
-                    <li class="detail-text-head">
-                        <p>{{$statics->where('id',33)->first()->title}}</p>
-                    </li>
-                    <li><p>{{$house->block->project->title}} / {{$house->block->block}} {{$statics->where('id',28)->first()->title}}</p></li>
-                    <li> <span>{{$statics->where('id',27)->first()->title}}</span> <span>{{$house->block->project->floor}} / {{$house->floor}}</span></li>
-                    <li> <span>{{$statics->where('id',29)->first()->title}}</span> <span>{{$house->date}}</span></li>
-
-                    <li>
-                        <p class="detail-text-head">{{$statics->where('id',34)->first()->title}}</p>
-                    </li>
-                    <li><span>{{$statics->where('id',19)->first()->title}}</span> <span> {{$company->title}}</span></li>
-                    <li><span>{{$statics->where('id',20)->first()->title}}</span><span> {{$house->block->project->title}}</span></li>
-                    <li><span>{{$statics->where('id',30)->first()->title}}</span> <span> {{ $house->block->project->address}}{{($house->block->project->floor)}}{{$statics->where('id',27)->first()->title}}</span></li>
-                    <li><span>Do</span><span>{{$house->block->project->date}} </span></li>
-                </ul>
+            <div class="detail-right-header">
+                <div class="detail-right-head">
+                    <span>{{$house->room}} {{$statics->where('id',22)->first()->title}}</span><span>{{$statics->where('id',48)->first()->title}} {{$statics->where('id',54)->first()->title}}</span>
+                </div>
+                <div class="detail-right-body">
+                    <ul>
+                        <li>{{$statics->where('id',29)->first()->title}}</li>
+                        <li>{{$statics->where('id',31)->first()->title}}</li>
+                        <li>{{$statics->where('id',32)->first()->title}}</li>
+                        <li>{{$statics->where('id',33)->first()->title}}</li>
+                        <li>{{$statics->where('id',34)->first()->title}}</li>
+                    </ul>
+                    <ul>
+                        <li>{{$statics->where('id',49)->first()->title}} {{$statics->where('id',54)->first()->title}}</li>
+                        <li>{{$statics->where('id',50)->first()->title}} {{$statics->where('id',54)->first()->title}}</li>
+                        <li>{{$statics->where('id',51)->first()->title}} {{$statics->where('id',54)->first()->title}}</li>
+                        <li>{{$statics->where('id',52)->first()->title}} {{$statics->where('id',54)->first()->title}}</li>
+                        <li>{{$statics->where('id',53)->first()->title}} {{$statics->where('id',54)->first()->title}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="detail-right-content">
+                <div class="detail-right-body">
+                    <ul>
+                        <li>{{$statics->where('id',46)->first()->title}}</li>
+                        <li>{{$statics->where('id',47)->first()->title}}</li>
+                    </ul>
+                    <ul>
+                        <li>{{$house->area}} {{$statics->where('id',54)->first()->title}}</li>
+                        <li>{{( ( (float)$statics->where('id',49)->first()->title)+((float)$statics->where('id',50)->first()->title)
+                        +((float)$statics->where('id',51)->first()->title)+((float)$statics->where('id',52)->first()->title)+
+                         ((float)$statics->where('id',53)->first()->title))}} {{$statics->where('id',54)->first()->title}}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

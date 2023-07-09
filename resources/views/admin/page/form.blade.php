@@ -33,7 +33,7 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="custom-tabs-one-tabContent">
-                            @foreach(config('app.languages') as $lang)
+                            @foreach(config('app.languages') as $index=>$lang)
                                 <div class="tab-pane fade {{$loop->first ? ' active show' : '' }}" id="title-{{$lang}}"
                                      role="tabpanel" aria-labelledby="custom-tabs-two-home-tab">
                                    <div class="row">

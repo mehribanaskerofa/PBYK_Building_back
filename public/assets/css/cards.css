@@ -308,9 +308,9 @@ body {
     align-items: center;
 }
 .filter-for-cards .buttons{
-    padding-bottom: 20px;
+    /*padding-bottom: 20px;*/
 }
-.filter-for-cards .buttons .buttons-inside {
+.filter-for-cards .buttons-inside {
     padding: 10px 20px 10px 20px;
     border: 1px solid rgb(214, 209, 209);
     margin-top: 15px;
@@ -335,7 +335,10 @@ body {
     height: 2px;
     transform: rotate(180deg);
 }
-
+.filter-dropdown-area-select{
+    outline: none;
+    border: none;
+}
 .filter-for-cards .area-range #min-area {
     margin-right: -20px;
     height: 2px;
@@ -352,6 +355,8 @@ body {
 
 .filter-for-cards .card-filters-up {
     align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .filter-for-cards .card-filters-up .buttons span {

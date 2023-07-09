@@ -2,6 +2,7 @@
 
 @push('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+
 @endpush
 
 @section('content')
@@ -30,7 +31,7 @@
                 </div>
                 <div class="about-right">
                     <div class="about-right-title">
-                        <div class="about-right-title-1">{{$about->title}}</div>
+                        <div class="about-right-title-1 font82">{{$about->title}}</div>
                     </div>
                     <div class="about-right-text">
 {{--                        <p>{{implode('', array_slice('!', 0, strlen($about->description) / 2))}}</p>--}}
@@ -85,7 +86,7 @@
                                 <div class="location-text-body"><span>100 m</span></div>
                             </div>
                         </div>
-                        <div class="location-title"><span>{{$location->title}}</span></div>
+                        <div class="location-title font82"><span>{{$location->title}}</span></div>
                     </div>
                 </div>
 
@@ -99,11 +100,13 @@
                                     <div class="location-item-title"><span>{{$advert->title}}</span></div>
                                     <div class="location-item-text"><span>{!! $advert->description !!}</span></div>
                                 </div>
+                                <div class="location-item-context">
                                 <div class="location-item-subtext">
                                     <p><i class="fa-solid fa-person-walking"></i><span>{{$advert->button}}</span></p>
                                 </div>
                                 <div class="location-item-img">
                                     <img src="{{asset('storage/'.$advert->image)}}" alt="">
+                                </div>
                                 </div>
                             </div>
                             @endforeach
@@ -242,7 +245,7 @@
     <section class="grand w" id="storagerooms">
         <div class="container">
             <div class="grand-content">
-                <div class="grand-head"><span>{{$statics->where('id',10)->first()->title}}</span></div>
+                <div class="grand-head font82"><span>{{$statics->where('id',10)->first()->title}}</span></div>
                 <div class="grand-items">
                     @foreach($grands as $grand)
                     <div class="grand-container">
@@ -296,7 +299,7 @@
                 <div class="apart-left">
                     <div class="apart-left-head">
                         <div class="apart-left-subtitle"><span>{{$menus[5]->name}}</span></div>
-                        <div class="apart-left-title"><span>{{$statics->where('id',14)->first()->title}}</span></div>
+                        <div class="apart-left-title font82"><span>{{$statics->where('id',14)->first()->title}}</span></div>
                     </div>
                     <div class="apart-left-context">
                         <div class="apart-text"><span>{{$statics->where('id',12)->first()->title}}</span></div>
@@ -655,7 +658,7 @@
             <div class="payment-container">
                 <div class="payment-head">
                     <div class="payment-subtitle"><span>{{$statics->where('id',38)->first()->title}}</span></div>
-{{--                    <div class="payment-title"><span>KREDIT KALKULYATORU</span></div>--}}
+                    <div class="payment-title font82"><span>KREDIT KALKULYATORU</span></div>
                 </div>
                 <div class="payment-content">
                     <div class="payment-left">
@@ -669,9 +672,10 @@
                                     <div class="dropdown">
                                         <div class="custom-select">
                                             <select class="select1">
-                                                @foreach($buildings as $index=>$built)
-                                                <option value="{{$index+1}}">{{$built->title}}{{$statics->where('id',22)->first()->title}}</option>
-                                                @endforeach
+{{--                                                @foreach($buildings as $index=>$built)--}}
+                                                <option value="1">{{$statics->where('id',20)->first()->title}}(11)</option>
+                                                <option value="2">{{$statics->where('id',20)->first()->title}}(13)</option>
+{{--                                                @endforeach--}}
                                             </select>
                                         </div>
                                     </div>

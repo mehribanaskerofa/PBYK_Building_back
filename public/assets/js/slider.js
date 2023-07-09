@@ -65,8 +65,8 @@ paginationItems.forEach(function(item, index) {
 item.addEventListener('click', function() {
   swiper3.slideTo(index);
   for (let j = 0; j < paginationItems.length; j++) {
-      paginationItems[j].style.backgroundColor = '';
-      paginationItems[j].style.color = '';
+      paginationItems[j].style.backgroundColor = 'transparent';
+      paginationItems[j].style.color = '#605348';
   }
 // console.log(this.className)
   // Tıklanan düğmenin arka plan rengini değiştirin
