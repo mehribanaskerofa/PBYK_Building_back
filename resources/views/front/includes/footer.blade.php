@@ -35,7 +35,7 @@
             <div class="request-text">
                 <p> {{$statics->where('id',16)->first()->title}} </p>
             </div>
-            <div class="button"><a href="#contact-section">{{$statics->where('id',7)->first()->title}}</a></div>
+            <div class="button"><a href="{{route('home-index','#contact-section')}}">{{$statics->where('id',7)->first()->title}}</a></div>
         </div>
     </div>
     <hr>

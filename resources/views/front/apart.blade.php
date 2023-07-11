@@ -3,6 +3,13 @@
 @push('css')
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
+        header{
+            background:#ecebe4;
+        }
+        header a,
+        .header-menu-left-button{
+            color:#5f5348 !important;
+        }
         .month-button {
             /* Add your default button styles here */
         }

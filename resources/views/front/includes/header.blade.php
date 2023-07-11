@@ -1,5 +1,6 @@
 <header class="w"  id="headers">
-    <div class="container">
+    <div class="">
+{{--        container--}}
         <div class="header">
             <div class="header-top">
                 <div class="header-menu">
@@ -15,7 +16,7 @@
                     <div class="header-menu-right">
                         <div class="header-menu-right-phone"><a href="tel:{{ str_replace(['.', '(', ')',' ','-'], '', $setting->phone)}}">{{$setting->phone}}</a> </div>
                         <div class="header-menu-right-call-button">
-                            <button ><a href="#contact-section"><i class="fa-solid fa-phone header-menu-right-call-icon"></i><span class="header-menu-right-call-btn">{{$statics->where('id',7)->first()->title}}</span></a></button>
+                            <button ><a href="{{route('home-index','#contact-section')}}"><i class="fa-solid fa-phone header-menu-right-call-icon"></i><span class="header-menu-right-call-btn">{{$statics->where('id',7)->first()->title}}</span></a></button>
                         </div>
                         <div class="language-items" style="width:200px;">
                             <select onchange="location = this.value;" class="language-dropdown">

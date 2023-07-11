@@ -2,23 +2,34 @@
 /* header-------------------------------------------- */
 
 header{
-
+    /*transition: 5s ease-in-out all;*/
     /* overflow: hidden; */
     position: relative;
-    background: linear-gradient(180deg, rgb(159 191 221) 0%, rgb(159 191 221) 98%);
+    background: linear-gradient(180deg, rgb(159 191 221) 10%, rgb(159 191 221) 98%);
 }
 .menu-bar a{
     text-decoration: none;
 }
 .header-bottom-section {
+    /*padding-top: 80px;*/
     overflow: hidden;
     position: relative;
-    background: linear-gradient(180deg, rgb(159 191 221) 0%, rgba(105,146,184,1) 98%);
+    background: linear-gradient(180deg, rgb(159 191 221) 10%, rgba(105,146,184,1) 98%);
 }
+
 .header{
+    /*background: linear-gradient(180deg, rgb(159 191 221) 100%, rgba(105,146,184,1) 0%);*/
+    z-index: 50;
     width: 100%;
     display: flex;
     align-items: center;
+}
+/*@media (max-height: 1000px) {*/
+    .header-top-menu-fixed{
+        position: fixed;
+        top: 0;
+        background-color: #5f5348;
+    /*}*/
 }
 .header-btn-class{
   background: #ebe9e4 ;

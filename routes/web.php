@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('front.index');
 })->name('home-index');
+Route::get('/page/{string?}', function () {
+    return view('front.index');
+})->name('page-index');
 
 
 Route::post('contact-send',[ContactFrontController::class,'store'])->name('contact-send');

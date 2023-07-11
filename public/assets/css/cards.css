@@ -8,7 +8,13 @@ box-sizing: border-box;
 body {
     background-color: #e5e8eb !important;
 }
-
+header{
+    background:#5f5348 !important;
+}
+header a,
+.header-menu-right-call-button span{
+    color:white !important;
+}
 :root {
     --text-color-secondary: #92278f;
     --text-color-third: #344f6a;
