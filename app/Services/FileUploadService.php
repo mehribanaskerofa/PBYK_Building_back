@@ -5,12 +5,13 @@ namespace App\Services;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Spatie\Image\Manipulations;
 
 class FileUploadService
 {
     public function uploadFile(UploadedFile $image, ?string $path = 'images', string $disk = 'public'): string
     {
-        $name = $path . '/' . Str::uuid()->toString() . '.' . $image->extension();
+        $name = $path . '/' . Str::uuid()->toString() . '.' .'webp';
         $image->storeAs($disk, $name);
         return $name;
     }
