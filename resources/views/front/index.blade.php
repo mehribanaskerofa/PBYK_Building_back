@@ -2,6 +2,16 @@
 
 
 @section('content')
+<section class="chatbot" style="position: fixed;bottom: 0;right: 0;background: red;" >
+    <h1>Chatbot</h1>
+
+    <div id="chatbox">
+        <!-- Chatbot mesajları burada görüntülenecek -->
+    </div>
+
+    <input type="text" id="userInput" data-token="{{ csrf_token() }}" placeholder="Mesajınızı yazın...">
+    <button onclick="sendMessage()">Gönder</button>
+</section>
 
     <section class="w header-bottom-section">
         <div class="header-bottom">
@@ -791,3 +801,6 @@
 
 @endsection
 
+@push('js')
+    <script src="{{asset('js/chatbot.js')}}"></script>
+@endpush
